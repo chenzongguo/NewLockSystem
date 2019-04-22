@@ -8,4 +8,60 @@ public class Photo {
     String Photo_Desc = "Photo_Desc";//图片说明
     String Photo_Uploaded = "Photo_Uploaded";//上传标记
     String Photo_Uploaded_DateTime = "Photo_Uploaded_DateTime";//上传时间
+
+    public String getPhoto_Code() {
+        return Photo_Code;
+    }
+
+    public void setPhoto_Code(String photo_Code) {
+        Photo_Code = photo_Code;
+    }
+
+    public String getPhoto_Content() {
+        return Photo_Content;
+    }
+
+    public void setPhoto_Content(String photo_Content) {
+        Photo_Content = photo_Content;
+    }
+
+    public String getPhoto_InputTime() {
+        return Photo_InputTime;
+    }
+
+    public void setPhoto_InputTime(String photo_InputTime) {
+        Photo_InputTime = photo_InputTime;
+    }
+
+    public String getPhoto_Type() {
+        return Photo_Type;
+    }
+
+    public void setPhoto_Type(String photo_Type) {
+        Photo_Type = photo_Type;
+    }
+
+    public String getPhoto_Desc() {
+        return Photo_Desc;
+    }
+
+    public void setPhoto_Desc(String photo_Desc) {
+        Photo_Desc = photo_Desc;
+    }
+
+    public String getPhoto_Uploaded() {
+        return Photo_Uploaded;
+    }
+
+    public void setPhoto_Uploaded(String photo_Uploaded) {
+        Photo_Uploaded = photo_Uploaded;
+    }
+
+    public String getPhoto_Uploaded_DateTime() {
+        return Photo_Uploaded_DateTime;
+    }
+
+    public void setPhoto_Uploaded_DateTime(String photo_Uploaded_DateTime) {
+        Photo_Uploaded_DateTime = photo_Uploaded_DateTime;
+    }
 }
