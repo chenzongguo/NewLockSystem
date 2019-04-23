@@ -95,6 +95,11 @@ public class WebViewActivity extends BaseActivity {
     }
 
     @Override
+    public void requestPermissionResult(boolean allowPermission) {
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:

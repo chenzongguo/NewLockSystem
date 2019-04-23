@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logo"
     >
 
     <include
@@ -18,27 +17,27 @@
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="300dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="100dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/shape_splash_login"
             android:text="@string/login"
             android:textColor="@color/white"
-            android:textSize="60dp"/>
+            android:textSize="30dp"/>
 
         <Button
             android:id="@+id/btnRegister"
-            android:layout_width="300dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="100dp"
-            android:layout_marginRight="80dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/shape_splash_register"
             android:text="@string/register"
-            android:textSize="60dp"/>
+            android:textSize="30dp"/>
     </RelativeLayout>
 </FrameLayout>

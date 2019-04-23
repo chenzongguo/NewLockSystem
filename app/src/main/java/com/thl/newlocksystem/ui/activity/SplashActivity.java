@@ -27,24 +27,43 @@ public class SplashActivity extends BaseActivity {
     Button mBtnLogin;
     @BindView(R2.id.btnRegister)
     Button mBtnRegister;
+    protected String[] downloadApkPermission = {
+            Manifest.permission.GET_ACCOUNTS,
+            Manifest.permission.READ_PHONE_STATE,
+            //相机
+            Manifest.permission.CAMERA,
+            //存储空间
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_SETTINGS,
+
+            Manifest.permission.BLUETOOTH
+    };
+
+    @Override
+    public void requestPermissionResult(boolean allowPermission) {
+        if (allowPermission) {
+//			downloadApk();
+        }
+    }
 
     @Override
     public void init() {
-        PermissionGen.with(this)
-                .addRequestCode(100)
-                .permissions(
-                        //电话通讯录
-                        Manifest.permission.GET_ACCOUNTS,
-                        Manifest.permission.READ_PHONE_STATE,
-                        //相机、麦克风
-                        Manifest.permission.RECORD_AUDIO,
-                        Manifest.permission.WAKE_LOCK,
-                        Manifest.permission.CAMERA,
-                        //存储空间
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_SETTINGS
-                )
-                .request();
+//        PermissionGen.with(this)
+//                .addRequestCode(100)
+//                .permissions(
+//                        //电话通讯录
+//                        Manifest.permission.GET_ACCOUNTS,
+//                        Manifest.permission.READ_PHONE_STATE,
+//                        //相机、麦克风
+//                        Manifest.permission.RECORD_AUDIO,
+//                        Manifest.permission.WAKE_LOCK,
+//                        Manifest.permission.CAMERA,
+//                        //存储空间
+//                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                        Manifest.permission.WRITE_SETTINGS
+//                )
+//                .request();
+        mayRequestPermission(downloadApkPermission);
 //        if (!TextUtils.isEmpty(UserCache.getToken())) {
 //            Intent intent = new Intent(this, MainActivity.class);
 //            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

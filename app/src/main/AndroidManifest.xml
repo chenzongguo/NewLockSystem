@@ -1,6 +1,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.thl.newlocksystem">
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
@@ -11,10 +25,10 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="design_width_in_dp"
-            android:value="1080"/>
+            android:value="360"/>
         <meta-data
             android:name="design_height_in_dp"
-            android:value="1920"/>
+            android:value="640"/>
 
         <activity
             android:name=".ui.activity.SplashActivity"
