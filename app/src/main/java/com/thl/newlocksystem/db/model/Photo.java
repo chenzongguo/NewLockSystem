@@ -1,8 +1,10 @@
 package com.thl.newlocksystem.db.model;
 
-public class Photo {
+import org.litepal.crud.LitePalSupport;
+
+public class Photo extends LitePalSupport {
     String Photo_Code = "Photo_Code";  //图片编码
-    String Photo_Content = "Photo_Content";	//图片内容
+    byte[] Photo_Content;	//图片内容
     String Photo_InputTime = "Photo_InputTime";//图片入库时间(yyyyMMddHHmmss)
     String Photo_Type = "Photo_Type";//图片类型(照片来源)
     String Photo_Desc = "Photo_Desc";//图片说明
@@ -17,11 +19,11 @@ public class Photo {
         Photo_Code = photo_Code;
     }
 
-    public String getPhoto_Content() {
+    public byte[] getPhoto_Content() {
         return Photo_Content;
     }
 
-    public void setPhoto_Content(String photo_Content) {
+    public void setPhoto_Content(byte[] photo_Content) {
         Photo_Content = photo_Content;
     }
 

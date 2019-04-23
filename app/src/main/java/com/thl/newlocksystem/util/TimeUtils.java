@@ -1,12 +1,28 @@
 package com.thl.newlocksystem.util;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
- * @创建者 CSDN_LQR
  * @描述 时间工具（需要joda-time）
  */
 public class TimeUtils {
+
+    /**
+     * 获取当前系统时间
+     *
+     * @Description:
+     * @Author 13050629
+     * @Date 2014-7-28
+     */
+    public static String getDateTime6(){
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss" ,Locale.CHINA);
+        String str = format.format(date);
+        return str;
+    }
 //
 //    /**
 //     * 得到仿微信日期格式输出

@@ -1,6 +1,8 @@
 package com.thl.newlocksystem.db.model;
 
-public class Unlock_Business {
+import org.litepal.crud.LitePalSupport;
+
+public class UnlockBusiness extends LitePalSupport {
     String PPBS_Code = "PPBS_Code";  //记录编码
     String Cus_Code = "Cus_Code";	//客户编码
     String Company_Code = "Company_Code";//无

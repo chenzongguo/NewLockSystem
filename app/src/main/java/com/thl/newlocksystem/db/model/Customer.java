@@ -1,6 +1,8 @@
 package com.thl.newlocksystem.db.model;
 
-public class Customer {
+import org.litepal.crud.LitePalSupport;
+
+public class Customer extends LitePalSupport {
     String Cus_Code = "Cus_Code";  //客户编码
     String Cus_Name = "Cus_Name";	//姓名
     String Cus_Sex = "Cus_Sex";//性别

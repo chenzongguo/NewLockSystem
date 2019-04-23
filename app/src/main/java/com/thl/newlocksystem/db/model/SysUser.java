@@ -1,6 +1,8 @@
 package com.thl.newlocksystem.db.model;
 
-public class Sys_User {
+import org.litepal.crud.LitePalSupport;
+
+public class SysUser extends LitePalSupport {
     String User_Code = "User_Code";  //用户编码
     String User_Id = "User_Id";	//用户名
     String User_Pwd = "User_Pwd";//用户密码
