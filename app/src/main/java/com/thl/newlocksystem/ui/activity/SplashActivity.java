@@ -86,7 +86,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void initListener() {
         mBtnLogin.setOnClickListener(v -> {
-//            jumpToActivity(LoginActivity.class);
+            jumpToActivity(LoginActivity.class);
             finish();
         });
         mBtnRegister.setOnClickListener(v -> {
