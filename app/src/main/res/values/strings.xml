@@ -33,7 +33,7 @@
     <!--登录-->
     <string name="login_error">登录失败</string>
     <string name="phone_format_error">手机格式有误</string>
-    <string name="phone_not_empty">手机号不能为空</string>
+    <string name="IDcard_not_empty">身份证号不能为空</string>
     <string name="password_not_empty">密码不能为空</string>
     <string name="nickname_not_empty">昵称不能为空</string>
     <string name="vertify_code_not_empty">验证码不能为空</string>

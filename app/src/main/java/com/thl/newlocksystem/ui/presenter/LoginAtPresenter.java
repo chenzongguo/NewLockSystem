@@ -4,6 +4,10 @@ import android.text.TextUtils;
 
 
 import com.thl.newlocksystem.R;
+import com.thl.newlocksystem.db.DBManager;
+import com.thl.newlocksystem.db.model.SysUser;
+import com.thl.newlocksystem.ui.activity.LoginActivity;
+import com.thl.newlocksystem.ui.activity.MainActivity;
 import com.thl.newlocksystem.ui.base.BaseActivity;
 import com.thl.newlocksystem.ui.base.BasePresenter;
 import com.thl.newlocksystem.ui.view.ILoginAtView;
@@ -22,7 +26,7 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
         String pwd = getView().getEtPwd().getText().toString().trim();
 
         if (TextUtils.isEmpty(phone)) {
-            UIUtils.showToast(UIUtils.getString(R.string.phone_not_empty));
+            UIUtils.showToast(UIUtils.getString(R.string.IDcard_not_empty));
             return;
         }
         if (TextUtils.isEmpty(pwd)) {
@@ -30,21 +34,21 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
             return;
         }
 
-        mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
-//        ApiRetrofit.getInstance().login(AppConst.REGION, phone, pwd)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(loginResponse -> {
-//                    int code = loginResponse.getCode();
-//                    mContext.hideWaitingDialog();
-//                    if (code == 200) {
-//                        UserCache.save(loginResponse.getResult().getId(), phone, loginResponse.getResult().getToken());
-//                        mContext.jumpToActivityAndClearTask(MainActivity.class);
-//                        mContext.finish();
-//                    } else {
-//                        loginError(new ServerException(UIUtils.getString(R.string.login_error) + code));
-//                    }
-//                }, this::loginError);
+
+        SysUser userBean = DBManager.getInstance().getSysUserByPwd(phone,pwd);
+        if(userBean!=null) {
+//            SharedPreferencesHelper.set(LoginActivity.this,
+//                    SPConstant.SYS_USER, SPConstant.User_Number, userBean.getUser_Number());
+//            SharedPreferencesHelper.set(LoginActivity.this,
+//                    SPConstant.SYS_USER, SPConstant.User_Power, userBean.getUser_Power());
+//            SharedPreferencesHelper.set(LoginActivity.this,
+//                    SPConstant.SYS_USER, SPConstant.User_Name, userBean.getUser_Name());
+            mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
+            mContext.jumpToActivityAndClearTask(MainActivity.class);
+            mContext.finish();
+        }else{
+
+        }
     }
 
     private void loginError(Throwable throwable) {

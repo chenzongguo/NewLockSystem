@@ -10,10 +10,8 @@ import com.thl.newlocksystem.R;
 import com.thl.newlocksystem.R2;
 import com.thl.newlocksystem.ui.base.BaseActivity;
 import com.thl.newlocksystem.ui.base.BasePresenter;
-import com.thl.newlocksystem.util.UIUtils;
 
 import butterknife.BindView;
-import kr.co.namee.permissiongen.PermissionGen;
 
 /**
  * @创建者 CSDN_LQR
@@ -28,56 +26,29 @@ public class SplashActivity extends BaseActivity {
     @BindView(R2.id.btnRegister)
     Button mBtnRegister;
     protected String[] downloadApkPermission = {
-            Manifest.permission.GET_ACCOUNTS,
+            //电话
             Manifest.permission.READ_PHONE_STATE,
             //相机
             Manifest.permission.CAMERA,
             //存储空间
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_SETTINGS,
-
-            Manifest.permission.BLUETOOTH
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
     @Override
     public void requestPermissionResult(boolean allowPermission) {
         if (allowPermission) {
-//			downloadApk();
         }
     }
 
     @Override
     public void init() {
-//        PermissionGen.with(this)
-//                .addRequestCode(100)
-//                .permissions(
-//                        //电话通讯录
-//                        Manifest.permission.GET_ACCOUNTS,
-//                        Manifest.permission.READ_PHONE_STATE,
-//                        //相机、麦克风
-//                        Manifest.permission.RECORD_AUDIO,
-//                        Manifest.permission.WAKE_LOCK,
-//                        Manifest.permission.CAMERA,
-//                        //存储空间
-//                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                        Manifest.permission.WRITE_SETTINGS
-//                )
-//                .request();
         mayRequestPermission(downloadApkPermission);
-//        if (!TextUtils.isEmpty(UserCache.getToken())) {
-//            Intent intent = new Intent(this, MainActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//            jumpToActivity(intent);
-//            finish();
-//        }
     }
 
     @Override
     public void initView() {
-
-        StatusBarUtil.setColor(this, UIUtils
-                .getColor(R.color.black1));
-
+        StatusBarUtil.setTranslucent(this,0);
         AlphaAnimation alphaAnimation = new AlphaAnimation(0, 1);
         alphaAnimation.setDuration(1000);
         mRlButton.startAnimation(alphaAnimation);

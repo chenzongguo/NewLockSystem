@@ -4,7 +4,10 @@
 	android:layout_height="match_parent"
 	android:orientation="vertical">
 
-	<include layout="@layout/include_toolbar"/>
+	<include
+		layout="@layout/include_toolbar"
+		android:visibility="gone"
+		/>
 
 	<ImageView
 		android:layout_width="match_parent"

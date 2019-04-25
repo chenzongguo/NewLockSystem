@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#0048c9</color>
     <color name="colorAccent">#D81B60</color>
     <!--<color name="colorPrimary">#393A3F</color>-->
     <!--<color name="colorPrimaryDark">#303135</color>-->
@@ -50,6 +50,7 @@
     <color name="green3">#1AAD19</color>
 
     <color name="blue0">#576B95</color>
+    <color name="blue">#0048C9</color>
 
     <color name="black0">#000000</color>
     <color name="black1">#99000000</color>
@@ -64,4 +65,9 @@
     <!--快速索引bar颜色-->
     <color name="side_bar">#919091</color>
     <color name="side_bar_pressed">#BFBFBF</color>
+
+    <!-- 浅灰色 -->
+    <color name="lightgrey">#EDEDED</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
 </resources>

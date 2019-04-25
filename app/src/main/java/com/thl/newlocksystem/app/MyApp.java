@@ -7,6 +7,8 @@ import android.util.Log;
 
 import com.thl.newlocksystem.app.base.BaseApp;
 
+import org.litepal.LitePal;
+
 /**
  * ━━━━━━神兽出没━━━━━━
  * 　　　┏┓　　　┏┓
@@ -37,7 +39,7 @@ public class MyApp extends BaseApp {
     @Override
     public void onCreate() {
         super.onCreate();
-//        LitePal.initialize(this);
+        LitePal.initialize(this);
 //        SQLiteDatabase db = Connector.getDatabase();
         instance = this;
         DisplayMetrics mDisplayMetrics = getResources().getDisplayMetrics();
