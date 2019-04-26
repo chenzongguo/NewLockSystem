@@ -1,27 +1,17 @@
 package com.thl.newlocksystem.ui.activity;
 
-import android.content.Intent;
-import android.view.View;
-
 import com.jaeger.library.StatusBarUtil;
 import com.thl.newlocksystem.R;
 import com.thl.newlocksystem.ui.base.BaseActivity;
 import com.thl.newlocksystem.ui.base.BasePresenter;
 
-public class MainActivity extends BaseActivity {
-
+public class LockedActivity extends BaseActivity {
 
     @Override
     public void initView() {
         super.initView();
         StatusBarUtil.setTranslucent(this);
     }
-
-    public void startActivity(View view){
-        this.jumpToActivityAndClearTask(LockedActivity.class);
-        this.finish();
-    }
-
     @Override
     public void requestPermissionResult(boolean allowPermission) {
 
@@ -34,6 +24,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected int provideContentViewId() {
-        return R.layout.activity_main;
+        return R.layout.activity_locked;
     }
 }

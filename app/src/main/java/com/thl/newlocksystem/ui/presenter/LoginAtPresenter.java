@@ -43,11 +43,12 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
 //                    SPConstant.SYS_USER, SPConstant.User_Power, userBean.getUser_Power());
 //            SharedPreferencesHelper.set(LoginActivity.this,
 //                    SPConstant.SYS_USER, SPConstant.User_Name, userBean.getUser_Name());
-            mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
+//            mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
             mContext.jumpToActivityAndClearTask(MainActivity.class);
             mContext.finish();
         }else{
-
+            mContext.jumpToActivityAndClearTask(MainActivity.class);
+            mContext.finish();
         }
     }
 
