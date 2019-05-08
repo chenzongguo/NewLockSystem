@@ -1,7 +1,9 @@
 package com.thl.newlocksystem.ui.activity;
 
+import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ import com.thl.newlocksystem.ui.view.ILoginAtView;
 
 import java.util.List;
 
+import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.BindViews;
 
@@ -29,15 +32,34 @@ public class LockedActivity extends BaseActivity<ILockedAtView, LockedAtPresente
     List<TextView> textViews;
     @BindView(R2.id.sumbit)
     Button btn_sumbit;
+    @BindViews({R2.id.idcardphoto,R2.id.lockphoto})
+    List<ImageView> imageViews;
 
     @Override
     public void initView() {
         super.initView();
         StatusBarUtil.setTranslucent(this);
     }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPresenter.ReadCardinit();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mPresenter.stopReadCard();
+    }
+
     @Override
     public void initListener() {
         btn_sumbit.setOnClickListener(v -> mPresenter.save());
+        textViews.get(0).setOnClickListener(v -> mPresenter.areaOnclick());
+        textViews.get(1).setOnClickListener(v -> mPresenter.lockedResonOnclick());
+        textViews.get(2).setOnClickListener(v -> mPresenter.sourceOfBusOnclick());
+        textViews.get(3).setOnClickListener(v -> mPresenter.lockTypeOnclick());
     }
     @Override
     public void requestPermissionResult(boolean allowPermission) {
@@ -62,5 +84,10 @@ public class LockedActivity extends BaseActivity<ILockedAtView, LockedAtPresente
     @Override
     public List<TextView> GetTvList() {
         return textViews;
+    }
+
+    @Override
+    public List<ImageView> GetImgList() {
+        return imageViews;
     }
 }

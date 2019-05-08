@@ -255,14 +255,14 @@
                                 android:textColor="@color/black0"
                                 android:textSize="14dp" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/area"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
                                 android:hint="请选择"
-                                android:inputType="textPassword"
+                                android:singleLine="true"
                                 android:text=""
                                 android:textColorHint="@color/gray3"
                                 android:textSize="18dp" />
@@ -285,14 +285,14 @@
                                 android:textColor="@color/black0"
                                 android:textSize="14dp" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/lockedReson"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
                                 android:hint="请选择"
-                                android:inputType="textPassword"
+                                android:singleLine="true"
                                 android:text=""
                                 android:textColorHint="@color/gray3"
                                 android:textSize="18dp" />
@@ -314,14 +314,14 @@
                                 android:textColor="@color/black0"
                                 android:textSize="14dp" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/sourceOfBus"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
                                 android:hint="请选择"
-                                android:inputType="textPassword"
+                                android:singleLine="true"
                                 android:text=""
                                 android:textColorHint="@color/gray3"
                                 android:textSize="18dp" />
@@ -343,14 +343,14 @@
                                 android:textColor="@color/black0"
                                 android:textSize="14dp" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/lockType"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
                                 android:hint="请选择"
-                                android:inputType="textPassword"
+                                android:singleLine="true"
                                 android:text=""
                                 android:textColorHint="@color/gray3"
                                 android:textSize="18dp" />
@@ -360,11 +360,12 @@
                     </LinearLayout>
 
                     <ImageView
+                        android:id="@+id/lockphoto"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
                         android:background="@drawable/idcard_photo" />
                 </LinearLayout>
                 <View style="@style/Line" />
