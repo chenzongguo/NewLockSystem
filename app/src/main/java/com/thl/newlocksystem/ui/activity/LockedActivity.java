@@ -28,7 +28,7 @@ public class LockedActivity extends BaseActivity<ILockedAtView, LockedAtPresente
     @BindViews({ R2.id.name, R2.id.sex,  R2.id.nation,R2.id.address,R2.id.cardnum,R2.id.phonenum,R2.id.detailed_addr})
     List<EditText> editTexts;
 
-    @BindViews({R2.id.area,R2.id.lockedReson,R2.id.sourceOfBus,R2.id.lockType})
+    @BindViews({R2.id.area,R2.id.lockedReson,R2.id.sourceOfBus,R2.id.lockType,R2.id.ReadStatus})
     List<TextView> textViews;
     @BindView(R2.id.sumbit)
     Button btn_sumbit;

@@ -301,11 +301,11 @@ public class LockedAtPresenter extends BasePresenter<ILockedAtView> implements R
 
     @Override
     public void readError(String error) {
-
+//        getView().GetTvList().get(4).setText(error);
     }
 
     @Override
     public void readStatus(String status) {
-
+//        getView().GetTvList().get(4).setText(status);
     }
 }
