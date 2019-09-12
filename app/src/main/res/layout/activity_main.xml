@@ -1,207 +1,380 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@color/gray5"
 	android:orientation="vertical">
 
-	<include
-		layout="@layout/include_toolbar"
-		android:visibility="gone"
+	<include layout="@layout/include_toolbar"/>
+
+
+	<androidx.viewpager.widget.ViewPager
+		android:id="@+id/vpContent"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"/>
+
+	<!--底部-->
+	<View
+		style="@style/Line"
 		/>
 
-	<ImageView
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1.3"
-		android:background="@drawable/ic_nj_banner"
-		android:onClick="startActivity"/>
-
 	<LinearLayout
+		android:id="@+id/llButtom"
 		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="2.2"
-        android:background="@color/lightgrey"
-		android:orientation="vertical" >
+		android:layout_height="120px"
+		android:layout_alignParentBottom="true"
+		android:background="@color/white">
+
 		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="0dp"
+			android:id="@+id/llMessage"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_gravity="center"
 			android:layout_weight="1"
-			android:layout_marginBottom="3dp"
-			android:orientation="horizontal" >
+			android:gravity="center"
+			android:orientation="vertical">
+
 			<RelativeLayout
-				android:layout_width="0dp"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
-				android:layout_marginRight="3dp"
-				android:background="@color/white"
-				android:orientation="vertical" >
-				<ImageView
-					android:layout_width="180px"
-					android:layout_height="180px"
-					android:layout_centerInParent="true"
-					android:background="@drawable/ic_nj_reserve"
-					android:onClick="startActivity"/>
-				<TextView
-					android:layout_width="match_parent"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="5"
+				android:gravity="bottom">
+
+				<RelativeLayout
+					android:id="@+id/rlMessage"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_alignParentBottom="true"
-					android:gravity="center"
-					android:text="开锁登记"
-					android:textColor="@color/black"
-					android:textSize="14sp" />
-			</RelativeLayout>
-			<RelativeLayout
-				android:layout_width="0dp"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
-				android:background="@color/white"
-				android:orientation="vertical" >
-				<ImageView
-					android:layout_width="180px"
-					android:layout_height="180px"
-					android:layout_centerInParent="true"
-					android:background="@drawable/ic_nj_reserve"
-					android:onClick="startActivity"/>
+					android:layout_centerHorizontal="true"
+					android:layout_marginBottom="10px">
+
+					<TextView
+						android:id="@+id/tvMessageNormal"
+						android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+						android:layout_height="@dimen/main_bottom_iv_vertical_size"
+						android:layout_centerInParent="true"
+						android:background="@mipmap/message_normal"
+						android:button="@null"
+						android:gravity="center"
+						android:textColor="@color/gray0"
+						android:textSize="12sp"/>
+
+					<TextView
+						android:id="@+id/tvMessagePress"
+						android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+						android:layout_height="@dimen/main_bottom_iv_vertical_size"
+						android:layout_centerInParent="true"
+						android:background="@mipmap/message_press"
+						android:button="@null"
+						android:gravity="center"
+						android:textColor="@color/green0"
+						android:textSize="12sp"/>
+				</RelativeLayout>
 
 				<TextView
-					android:layout_width="match_parent"
+					android:id="@+id/tvMessageCount"
+					android:layout_width="38px"
+					android:layout_height="40px"
+					android:layout_alignRight="@id/rlMessage"
+					android:layout_marginRight="-25px"
+					android:layout_marginTop="-5px"
+					android:background="@mipmap/bg_unread"
+					android:gravity="center|bottom"
+					android:paddingBottom="3px"
+					android:text="1"
+					android:textColor="@color/white"
+					android:textSize="24px"
+					android:visibility="gone"/>
+			</RelativeLayout>
+
+			<RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				android:layout_weight="3">
+
+				<TextView
+					android:id="@+id/tvMessageTextNormal"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_alignParentBottom="true"
-					android:gravity="center"
-					android:text="历史记录"
-					android:textColor="@color/black"
-					android:textSize="14sp" />
+					android:layout_alignParentStart="true"
+					android:layout_marginStart="0dp"
+					android:text="@string/home_page"
+					android:textColor="@color/gray0"
+					android:textSize="24px" />
+
+				<TextView
+					android:id="@+id/tvMessageTextPress"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignTop="@+id/tvMessageTextNormal"
+					android:layout_marginTop="0dp"
+					android:text="@string/home_page"
+					android:textColor="@color/green0"
+					android:textSize="24px" />
 			</RelativeLayout>
 		</LinearLayout>
 
 		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="0dp"
+			android:id="@+id/llContacts"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_gravity="center"
 			android:layout_weight="1"
-			android:paddingBottom="3dp"
-			android:orientation="horizontal" >
+			android:gravity="center"
+			android:orientation="vertical">
+
 			<RelativeLayout
-				android:layout_width="0dp"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
-				android:layout_marginRight="3dp"
-				android:background="@color/white"
-				android:orientation="vertical" >
-				<ImageView
-					android:layout_width="180px"
-					android:layout_height="180px"
-					android:layout_centerInParent="true"
-					android:background="@drawable/ic_nj_reserve"
-					android:onClick="startActivity"/>
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="5"
+				android:gravity="bottom">
+
+				<RelativeLayout
+					android:id="@+id/rlContacts"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_marginBottom="10px">
+
+					<TextView
+						android:id="@+id/tvContactsNormal"
+						android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+						android:layout_height="@dimen/main_bottom_iv_vertical_size"
+						android:background="@mipmap/contacts_normal"
+						android:button="@null"
+						android:gravity="center"
+						android:textColor="@color/gray0"
+						android:textSize="24px"/>
+
+					<TextView
+						android:id="@+id/tvContactsPress"
+						android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+						android:layout_height="@dimen/main_bottom_iv_vertical_size"
+						android:background="@mipmap/contacts_press"
+						android:button="@null"
+						android:gravity="center"
+						android:textColor="@color/green0"
+						android:textSize="24px"/>
+
+
+				</RelativeLayout>
 
 				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_alignParentBottom="true"
+					android:id="@+id/tvContactCount"
+					android:layout_width="38px"
+					android:layout_height="40px"
+					android:layout_alignRight="@id/rlContacts"
+					android:layout_marginRight="-25px"
+					android:layout_marginTop="-5px"
+					android:background="@mipmap/bg_unread"
+					android:gravity="center|bottom"
+					android:paddingBottom="3px"
+					android:text="1"
+					android:textColor="@color/white"
+					android:textSize="24px"
+					android:visibility="gone"/>
+
+				<TextView
+					android:id="@+id/tvContactRedDot"
+					android:layout_width="20px"
+					android:layout_height="20px"
+					android:layout_alignRight="@id/rlContacts"
+					android:layout_marginRight="-10px"
+					android:layout_marginTop="-0px"
+					android:background="@mipmap/bg_unread"
 					android:gravity="center"
-					android:text="从业人员"
-					android:textColor="@color/black"
-					android:textSize="14sp" />
+					android:textColor="@color/white"
+					android:textSize="24px"
+					android:visibility="gone"/>
+
 			</RelativeLayout>
+
 			<RelativeLayout
-				android:layout_width="0dp"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
-				android:background="@color/white"
-				android:orientation="vertical" >
-				<ImageView
-					android:layout_width="180px"
-					android:layout_height="180px"
-					android:layout_centerInParent="true"
-					android:background="@drawable/ic_nj_reserve"
-					android:onClick="startActivity"/>
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				android:layout_weight="3">
 
 				<TextView
-					android:layout_width="match_parent"
+					android:id="@+id/tvContactsTextNormal"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_alignParentBottom="true"
-					android:gravity="center"
-					android:text="积分查询"
-					android:textColor="@color/black"
-					android:textSize="14sp" />
+					android:text="@string/allocation"
+					android:textColor="@color/gray0"
+					android:textSize="24px" />
+
+				<TextView
+					android:id="@+id/tvContactsTextPress"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/allocation"
+					android:textColor="@color/green0"
+					android:textSize="24px" />
 			</RelativeLayout>
 		</LinearLayout>
 
 		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="0dp"
+			android:id="@+id/llDiscovery"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_gravity="center"
 			android:layout_weight="1"
-			android:orientation="horizontal" >
+			android:gravity="center"
+			android:orientation="vertical">
+
 			<RelativeLayout
-				android:layout_width="0dp"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
-				android:layout_marginRight="3dp"
-				android:background="@color/white"
-				android:orientation="vertical" >
-				<ImageView
-					android:layout_width="180px"
-					android:layout_height="180px"
-					android:layout_centerInParent="true"
-					android:background="@drawable/ic_nj_reserve"
-					android:onClick="startActivity"/>
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="5"
+				android:gravity="bottom">
+
+				<RelativeLayout
+					android:id="@+id/rlDiscovery"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_marginBottom="10px">
+
+					<TextView
+						android:id="@+id/tvDiscoveryNormal"
+						android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+						android:layout_height="@dimen/main_bottom_iv_vertical_size"
+						android:background="@mipmap/discovery_normal"
+						android:button="@null"
+						android:gravity="center"
+						android:textColor="@color/gray0"
+						android:textSize="24px"/>
+
+					<TextView
+						android:id="@+id/tvDiscoveryPress"
+						android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+						android:layout_height="@dimen/main_bottom_iv_vertical_size"
+						android:background="@mipmap/discovery_press"
+						android:button="@null"
+						android:gravity="center"
+						android:textColor="@color/green0"
+						android:textSize="24px"/>
+				</RelativeLayout>
 
 				<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_alignParentBottom="true"
-					android:gravity="center"
-					android:text="通知通告"
-					android:textColor="@color/black"
-					android:textSize="14sp" />
+					android:id="@+id/tvDiscoveryCount"
+					android:layout_width="38px"
+					android:layout_height="40px"
+					android:layout_alignRight="@id/rlDiscovery"
+					android:layout_marginRight="-25px"
+					android:layout_marginTop="-5px"
+					android:background="@mipmap/bg_unread"
+					android:gravity="center|bottom"
+					android:paddingBottom="3px"
+					android:text="1"
+					android:textColor="@color/white"
+					android:textSize="24px"
+					android:visibility="gone"/>
+
 			</RelativeLayout>
+
 			<RelativeLayout
-				android:layout_width="0dp"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
-				android:layout_marginRight="3dp"
-				android:background="@color/white"
-				android:orientation="vertical" >
-				<ImageView
-					android:layout_width="180px"
-					android:layout_height="180px"
-					android:layout_centerInParent="true"
-					android:background="@drawable/ic_nj_reserve"
-					android:onClick="startActivity"/>
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				android:layout_weight="3">
 
 				<TextView
-					android:layout_width="match_parent"
+					android:id="@+id/tvDiscoveryTextNormal"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_alignParentBottom="true"
+					android:text="@string/order"
+					android:textColor="@color/gray0"
+					android:textSize="24px" />
+
+				<TextView
+					android:id="@+id/tvDiscoveryTextPress"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/order"
+					android:textColor="@color/green0"
+					android:textSize="24px" />
+			</RelativeLayout>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/llMe"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_gravity="center"
+			android:layout_weight="1"
+			android:gravity="center"
+			android:orientation="vertical">
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="10px"
+				android:layout_weight="5"
+				android:gravity="bottom">
+
+				<RelativeLayout
+					android:id="@+id/rlMe"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true">
+
+					<TextView
+						android:id="@+id/tvMeNormal"
+						android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+						android:layout_height="@dimen/main_bottom_iv_vertical_size"
+						android:background="@mipmap/me_normal"
+						android:button="@null"
+						android:gravity="center"
+						android:textColor="@color/gray0"
+						android:textSize="24px"/>
+
+					<TextView
+						android:id="@+id/tvMePress"
+						android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+						android:layout_height="@dimen/main_bottom_iv_vertical_size"
+						android:background="@mipmap/me_press"
+						android:button="@null"
+						android:gravity="center"
+						android:textColor="@color/green0"
+						android:textSize="24px"/>
+				</RelativeLayout>
+
+				<TextView
+					android:id="@+id/tvMeCount"
+					android:layout_width="20px"
+					android:layout_height="20px"
+					android:layout_alignRight="@id/rlMe"
+					android:layout_marginRight="-10px"
+					android:layout_marginTop="-0px"
+					android:background="@mipmap/bg_unread"
 					android:gravity="center"
-					android:text="信息报查"
-					android:textColor="@color/black"
-					android:textSize="14sp" />
+					android:textColor="@color/white"
+					android:textSize="24px"
+					android:visibility="gone"/>
 			</RelativeLayout>
 
 			<RelativeLayout
-				android:layout_width="0dp"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
-				android:background="@color/white"
-				android:orientation="vertical" >
-				<ImageView
-					android:layout_width="180px"
-					android:layout_height="180px"
-					android:layout_centerInParent="true"
-					android:background="@drawable/ic_nj_reserve"
-					android:onClick="startActivity"/>
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				android:layout_weight="3">
 
 				<TextView
-					android:layout_width="match_parent"
+					android:id="@+id/tvMeTextNormal"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_alignParentBottom="true"
-					android:gravity="center"
-					android:text="新闻报道"
-					android:textColor="@color/black"
-					android:textSize="14sp" />
+					android:text="@string/me"
+					android:textColor="@color/gray0"
+					android:textSize="24px"/>
+
+				<TextView
+					android:id="@+id/tvMeTextPress"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/me"
+					android:textColor="@color/green0"
+					android:textSize="24px"/>
 			</RelativeLayout>
 		</LinearLayout>
 	</LinearLayout>
-
 </LinearLayout>
