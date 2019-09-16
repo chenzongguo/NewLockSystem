@@ -34,7 +34,6 @@
 
     <string name="notifyTitle">提示</string>
     <string name="notifyMsg">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开应用所需权限。</string>
-    <string name="setting">设置</string>
 
     <!--登录-->
     <string name="login_error">登录失败</string>
@@ -44,4 +43,18 @@
     <string name="nickname_not_empty">昵称不能为空</string>
     <string name="vertify_code_not_empty">验证码不能为空</string>
     <string name="disconnect_server">与服务器失联</string>
+
+    <!--我的-->
+    <string name="my_chat_account">手机号：18800008888</string>
+    <string name="album">相册</string>
+    <string name="collection">收藏</string>
+    <string name="wallet">钱包</string>
+    <string name="card_package">卡包</string>
+    <string name="jian_shu">简书</string>
+    <string name="csdn">CSDN</string>
+    <string name="oschina">码云</string>
+    <string name="github">GitHub</string>
+    <string name="emotion">表情</string>
+    <string name="setting">设置</string>
+    <string name="qr_code_card_tip">扫一扫上面的二维码图案，加我微信</string>
 </resources>

@@ -127,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="用短信验证码登录"
+            android:text="用短信验证码注册账号"
             android:textColor="@color/blue0"
             android:textSize="14dp"/>
     </LinearLayout>
@@ -168,9 +168,9 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="使用其他方式登录"
+                android:text="微信登录"
                 android:textColor="@color/blue0"
-                android:textSize="14dp"/>
+                android:textSize="14dp" />
         </LinearLayout>
     </RelativeLayout>
 
