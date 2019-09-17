@@ -22,52 +22,52 @@ public class FragmentFactory {
         return mInstance;
     }
 
-//    private RecentMessageFragment mRecentMessageFragment;
-//    private ContactsFragment mContactsFragment;
-//    private DiscoveryFragment mDiscoveryFragment;
-//    private MeFragment mMeFragment;
-//
-//    public RecentMessageFragment getRecentMessageFragment() {
-//        if (mRecentMessageFragment == null) {
-//            synchronized (FragmentFactory.class) {
-//                if (mRecentMessageFragment == null) {
-//                    mRecentMessageFragment = new RecentMessageFragment();
-//                }
-//            }
-//        }
-//        return mRecentMessageFragment;
-//    }
-//
-//    public ContactsFragment getContactsFragment() {
-//        if (mContactsFragment == null) {
-//            synchronized (FragmentFactory.class) {
-//                if (mContactsFragment == null) {
-//                    mContactsFragment = new ContactsFragment();
-//                }
-//            }
-//        }
-//        return mContactsFragment;
-//    }
-//
-//    public DiscoveryFragment getDiscoveryFragment() {
-//        if (mDiscoveryFragment == null) {
-//            synchronized (FragmentFactory.class) {
-//                if (mDiscoveryFragment == null) {
-//                    mDiscoveryFragment = new DiscoveryFragment();
-//                }
-//            }
-//        }
-//        return mDiscoveryFragment;
-//    }
-//
-//    public MeFragment getMeFragment() {
-//        if (mMeFragment == null) {
-//            synchronized (FragmentFactory.class) {
-//                if (mMeFragment == null) {
-//                    mMeFragment = new MeFragment();
-//                }
-//            }
-//        }
-//        return mMeFragment;
-//    }
+    private HomePageFragment mHomePageFragment;
+    private OrderAllocationFragment mOrderAllocationFragment;
+    private OrderManageFragment mOrderManageFragment;
+    private MeFragment mMeFragment;
+
+    public HomePageFragment getHomePageFragment() {
+        if (mHomePageFragment == null) {
+            synchronized (FragmentFactory.class) {
+                if (mHomePageFragment == null) {
+                    mHomePageFragment = new HomePageFragment();
+                }
+            }
+        }
+        return mHomePageFragment;
+    }
+
+    public OrderAllocationFragment getOrderAllocationFragment() {
+        if (mOrderAllocationFragment == null) {
+            synchronized (FragmentFactory.class) {
+                if (mOrderAllocationFragment == null) {
+                    mOrderAllocationFragment = new OrderAllocationFragment();
+                }
+            }
+        }
+        return mOrderAllocationFragment;
+    }
+
+    public OrderManageFragment getOrderManageFragment() {
+        if (mOrderManageFragment == null) {
+            synchronized (FragmentFactory.class) {
+                if (mOrderManageFragment == null) {
+                    mOrderManageFragment = new OrderManageFragment();
+                }
+            }
+        }
+        return mOrderManageFragment;
+    }
+
+    public MeFragment getMeFragment() {
+        if (mMeFragment == null) {
+            synchronized (FragmentFactory.class) {
+                if (mMeFragment == null) {
+                    mMeFragment = new MeFragment();
+                }
+            }
+        }
+        return mMeFragment;
+    }
 }
