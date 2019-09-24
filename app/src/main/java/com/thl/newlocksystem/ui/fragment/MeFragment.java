@@ -14,7 +14,7 @@ public class MeFragment extends BaseFragment<MeFgView, MeFgPresenter> implements
 
     @Override
     protected int provideContentViewId() {
-        return R.layout.fragment_order_manage;
+        return R.layout.fragment_me;
     }
 
 

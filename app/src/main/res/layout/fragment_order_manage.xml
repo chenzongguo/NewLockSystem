@@ -27,15 +27,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="已分配"
-                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:text="待确认"
                     android:textColor="@color/white"
-                    android:gravity="center"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     android:textSize="18sp"
                     android:text="0"
                     android:textColor="@color/white"
@@ -60,7 +60,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     android:textSize="18sp"
                     android:text="0"
                     android:textColor="@color/white"
@@ -85,7 +85,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     android:textSize="18sp"
                     android:text="0"
                     android:textColor="@color/white"
@@ -110,7 +110,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     android:textSize="18sp"
                     android:text="0"
                     android:textColor="@color/white"
@@ -144,7 +144,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     android:textSize="18sp"
                     android:text="0"
                     android:textColor="@color/white"
@@ -169,7 +169,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     android:textSize="18sp"
                     android:text="0"
                     android:textColor="@color/white"
@@ -194,7 +194,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     android:textSize="18sp"
                     android:text="0"
                     android:textColor="@color/white"
@@ -219,7 +219,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     android:textSize="18sp"
                     android:text="0"
                     android:textColor="@color/white"

@@ -11,6 +11,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 
+import com.jaeger.library.StatusBarUtil;
 import com.thl.newlocksystem.R;
 import com.thl.newlocksystem.R2;
 import com.thl.newlocksystem.app.AppConst;
@@ -101,6 +102,8 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
 
     @Override
     public void initView() {
+//        StatusBarUtil.setTranslucent(this);
+//        StatusBarUtil.setColorNoTranslucent(this,UIUtils.getColor(R.color.side_bar_pressed));
         setToolbarTitle(UIUtils.getString(R.string.app_name));
         mIbAddMenu.setVisibility(View.VISIBLE);
 

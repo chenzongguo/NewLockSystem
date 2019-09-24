@@ -3,14 +3,27 @@ package com.thl.newlocksystem.ui.fragment;
 import android.widget.ListView;
 
 import com.thl.newlocksystem.R;
+import com.thl.newlocksystem.R2;
+import com.thl.newlocksystem.ui.activity.MainActivity;
 import com.thl.newlocksystem.ui.base.BaseFragment;
 import com.thl.newlocksystem.ui.presenter.OrderAllocationFgPresenter;
 import com.thl.newlocksystem.ui.view.OrderAllocationFgView;
 
+import butterknife.BindView;
+
 public class OrderAllocationFragment extends BaseFragment<OrderAllocationFgView, OrderAllocationFgPresenter> implements OrderAllocationFgView{
+
+    @BindView(R2.id.lv_order_allocation)
+    ListView lv_OrderAllocation;
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.getConversations();
+    }
+
     @Override
     protected OrderAllocationFgPresenter createPresenter() {
-        return null;
+        return new OrderAllocationFgPresenter((MainActivity) getActivity());
     }
 
     @Override
@@ -20,6 +33,6 @@ public class OrderAllocationFragment extends BaseFragment<OrderAllocationFgView,
 
     @Override
     public ListView getLvOrderAllocation() {
-        return null;
+        return lv_OrderAllocation;
     }
 }

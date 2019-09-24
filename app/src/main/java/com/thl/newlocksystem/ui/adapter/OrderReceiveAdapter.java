@@ -5,21 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.thl.newlocksystem.R;
 
-import androidx.recyclerview.widget.RecyclerView;
 
 public class OrderReceiveAdapter extends BaseAdapter {
     private LayoutInflater inflater;
+    private OnListenerClick onClick;
+
+    public void setOnClick(OnListenerClick onClick) {
+        this.onClick = onClick;
+    }
 
     public OrderReceiveAdapter(Context context) {
         // TODO Auto-generated constructor stub
-//        if(items.size()>0){
-//            items.clear();
-//        }
-//        items.addAll(list);
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
@@ -44,18 +45,27 @@ public class OrderReceiveAdapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.item_order, null);
             holder.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
+            holder.btn_receiveOrder = convertView.findViewById(R.id.btn_receive_order);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-//        if(items.size()>0){
-//            map = items.get(position);
-//            if(map != null){
-//            }
-//        }
+        holder.btn_receiveOrder.setOnClickListener(new android.view.View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                onClick.OrderReceive();
+            }
+        });
         return convertView;
     }
     class ViewHolder{
         TextView tv_time;
+        Button btn_receiveOrder;
+    }
+
+    public interface OnListenerClick{
+        void OrderReceive();
     }
 }

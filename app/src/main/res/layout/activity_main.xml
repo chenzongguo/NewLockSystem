@@ -25,7 +25,7 @@
 	<LinearLayout
 		android:id="@+id/llButtom"
 		android:layout_width="match_parent"
-		android:layout_height="120px"
+		android:layout_height="80dp"
 		android:layout_alignParentBottom="true"
 		android:background="@color/white">
 
@@ -49,7 +49,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_centerHorizontal="true"
-					android:layout_marginBottom="10px">
+					android:layout_marginBottom="5dp">
 
 					<TextView
 						android:id="@+id/tvMessageNormal"
@@ -60,7 +60,7 @@
 						android:button="@null"
 						android:gravity="center"
 						android:textColor="@color/gray0"
-						android:textSize="12sp"/>
+						android:textSize="16sp"/>
 
 					<TextView
 						android:id="@+id/tvMessagePress"
@@ -71,22 +71,22 @@
 						android:button="@null"
 						android:gravity="center"
 						android:textColor="@color/green0"
-						android:textSize="12sp"/>
+						android:textSize="16sp"/>
 				</RelativeLayout>
 
 				<TextView
 					android:id="@+id/tvMessageCount"
-					android:layout_width="38px"
-					android:layout_height="40px"
+					android:layout_width="19dp"
+					android:layout_height="20dp"
 					android:layout_alignRight="@id/rlMessage"
-					android:layout_marginRight="-25px"
-					android:layout_marginTop="-5px"
+					android:layout_marginRight="-12.5dp"
+					android:layout_marginTop="-2.5dp"
 					android:background="@mipmap/bg_unread"
 					android:gravity="center|bottom"
-					android:paddingBottom="3px"
+					android:paddingBottom="1.5dp"
 					android:text="1"
 					android:textColor="@color/white"
-					android:textSize="24px"
+					android:textSize="12.dp"
 					android:visibility="gone"/>
 			</RelativeLayout>
 
@@ -103,7 +103,7 @@
 					android:layout_marginStart="0dp"
 					android:text="@string/home_page"
 					android:textColor="@color/gray0"
-					android:textSize="24px" />
+					android:textSize="12dp" />
 
 				<TextView
 					android:id="@+id/tvMessageTextPress"
@@ -113,7 +113,7 @@
 					android:layout_marginTop="0dp"
 					android:text="@string/home_page"
 					android:textColor="@color/green0"
-					android:textSize="24px" />
+					android:textSize="12dp" />
 			</RelativeLayout>
 		</LinearLayout>
 
@@ -137,7 +137,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_centerHorizontal="true"
-					android:layout_marginBottom="10px">
+					android:layout_marginBottom="5dp">
 
 					<TextView
 						android:id="@+id/tvContactsNormal"
@@ -147,7 +147,7 @@
 						android:button="@null"
 						android:gravity="center"
 						android:textColor="@color/gray0"
-						android:textSize="24px"/>
+						android:textSize="12dp"/>
 
 					<TextView
 						android:id="@+id/tvContactsPress"
@@ -157,37 +157,37 @@
 						android:button="@null"
 						android:gravity="center"
 						android:textColor="@color/green0"
-						android:textSize="24px"/>
+						android:textSize="12dp"/>
 
 
 				</RelativeLayout>
 
 				<TextView
 					android:id="@+id/tvContactCount"
-					android:layout_width="38px"
-					android:layout_height="40px"
+					android:layout_width="19dp"
+					android:layout_height="20dp"
 					android:layout_alignRight="@id/rlContacts"
-					android:layout_marginRight="-25px"
-					android:layout_marginTop="-5px"
+					android:layout_marginRight="-12.5dp"
+					android:layout_marginTop="-2.5dp"
 					android:background="@mipmap/bg_unread"
 					android:gravity="center|bottom"
-					android:paddingBottom="3px"
+					android:paddingBottom="1.5dp"
 					android:text="1"
 					android:textColor="@color/white"
-					android:textSize="24px"
+					android:textSize="12dp"
 					android:visibility="gone"/>
 
 				<TextView
 					android:id="@+id/tvContactRedDot"
-					android:layout_width="20px"
-					android:layout_height="20px"
+					android:layout_width="10dp"
+					android:layout_height="10dp"
 					android:layout_alignRight="@id/rlContacts"
-					android:layout_marginRight="-10px"
-					android:layout_marginTop="-0px"
+					android:layout_marginRight="-5dp"
+					android:layout_marginTop="-0dp"
 					android:background="@mipmap/bg_unread"
 					android:gravity="center"
 					android:textColor="@color/white"
-					android:textSize="24px"
+					android:textSize="12dp"
 					android:visibility="gone"/>
 
 			</RelativeLayout>
@@ -203,7 +203,7 @@
 					android:layout_height="wrap_content"
 					android:text="@string/allocation"
 					android:textColor="@color/gray0"
-					android:textSize="24px" />
+					android:textSize="12dp" />
 
 				<TextView
 					android:id="@+id/tvContactsTextPress"
@@ -211,7 +211,7 @@
 					android:layout_height="wrap_content"
 					android:text="@string/allocation"
 					android:textColor="@color/green0"
-					android:textSize="24px" />
+					android:textSize="12dp" />
 			</RelativeLayout>
 		</LinearLayout>
 
@@ -235,7 +235,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_centerHorizontal="true"
-					android:layout_marginBottom="10px">
+					android:layout_marginBottom="5dp">
 
 					<TextView
 						android:id="@+id/tvDiscoveryNormal"
@@ -245,7 +245,7 @@
 						android:button="@null"
 						android:gravity="center"
 						android:textColor="@color/gray0"
-						android:textSize="24px"/>
+						android:textSize="12dp"/>
 
 					<TextView
 						android:id="@+id/tvDiscoveryPress"
@@ -255,22 +255,22 @@
 						android:button="@null"
 						android:gravity="center"
 						android:textColor="@color/green0"
-						android:textSize="24px"/>
+						android:textSize="12dp"/>
 				</RelativeLayout>
 
 				<TextView
 					android:id="@+id/tvDiscoveryCount"
-					android:layout_width="38px"
-					android:layout_height="40px"
+					android:layout_width="19dp"
+					android:layout_height="20dp"
 					android:layout_alignRight="@id/rlDiscovery"
-					android:layout_marginRight="-25px"
-					android:layout_marginTop="-5px"
+					android:layout_marginRight="-12.5dp"
+					android:layout_marginTop="-2.5dp"
 					android:background="@mipmap/bg_unread"
 					android:gravity="center|bottom"
-					android:paddingBottom="3px"
+					android:paddingBottom="1.5dp"
 					android:text="1"
 					android:textColor="@color/white"
-					android:textSize="24px"
+					android:textSize="12dp"
 					android:visibility="gone"/>
 
 			</RelativeLayout>
@@ -286,7 +286,7 @@
 					android:layout_height="wrap_content"
 					android:text="@string/order"
 					android:textColor="@color/gray0"
-					android:textSize="24px" />
+					android:textSize="12dp" />
 
 				<TextView
 					android:id="@+id/tvDiscoveryTextPress"
@@ -294,7 +294,7 @@
 					android:layout_height="wrap_content"
 					android:text="@string/order"
 					android:textColor="@color/green0"
-					android:textSize="24px" />
+					android:textSize="12dp" />
 			</RelativeLayout>
 		</LinearLayout>
 
@@ -310,7 +310,7 @@
 			<RelativeLayout
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
-				android:layout_marginBottom="10px"
+				android:layout_marginBottom="5dp"
 				android:layout_weight="5"
 				android:gravity="bottom">
 
@@ -328,7 +328,7 @@
 						android:button="@null"
 						android:gravity="center"
 						android:textColor="@color/gray0"
-						android:textSize="24px"/>
+						android:textSize="12dp"/>
 
 					<TextView
 						android:id="@+id/tvMePress"
@@ -338,20 +338,20 @@
 						android:button="@null"
 						android:gravity="center"
 						android:textColor="@color/green0"
-						android:textSize="24px"/>
+						android:textSize="12dp"/>
 				</RelativeLayout>
 
 				<TextView
 					android:id="@+id/tvMeCount"
-					android:layout_width="20px"
-					android:layout_height="20px"
+					android:layout_width="10dp"
+					android:layout_height="10dp"
 					android:layout_alignRight="@id/rlMe"
-					android:layout_marginRight="-10px"
-					android:layout_marginTop="-0px"
+					android:layout_marginRight="-5dp"
+					android:layout_marginTop="-0dp"
 					android:background="@mipmap/bg_unread"
 					android:gravity="center"
 					android:textColor="@color/white"
-					android:textSize="24px"
+					android:textSize="12dp"
 					android:visibility="gone"/>
 			</RelativeLayout>
 
@@ -366,7 +366,7 @@
 					android:layout_height="wrap_content"
 					android:text="@string/me"
 					android:textColor="@color/gray0"
-					android:textSize="24px"/>
+					android:textSize="12dp"/>
 
 				<TextView
 					android:id="@+id/tvMeTextPress"
@@ -374,7 +374,7 @@
 					android:layout_height="wrap_content"
 					android:text="@string/me"
 					android:textColor="@color/green0"
-					android:textSize="24px"/>
+					android:textSize="12dp"/>
 			</RelativeLayout>
 		</LinearLayout>
 	</LinearLayout>
