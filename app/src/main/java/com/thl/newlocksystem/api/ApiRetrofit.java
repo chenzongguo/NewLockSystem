@@ -68,4 +68,8 @@ public class ApiRetrofit extends BaseApiRetrofit {
         return mApi.changeState(getRequestBody(new ChangeStateRequest(imei,update_status)));
     }
 
+    //更改设备更新状态
+    public Observable<CheckUpdateResponse> sendCaptcha(String imei, String update_status) {
+        return mApi.sendCaptcha(getRequestBody(new ChangeStateRequest(imei,update_status)));
+    }
 }

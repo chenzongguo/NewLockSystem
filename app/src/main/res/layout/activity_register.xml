@@ -86,7 +86,7 @@
                 android:textSize="28px" />
 
             <Button
-                android:id="@+id/btnRegister"
+                android:id="@+id/btnGetVerifyCode"
                 android:layout_width="match_parent"
                 android:layout_height="90px"
                 android:layout_marginBottom="30px"

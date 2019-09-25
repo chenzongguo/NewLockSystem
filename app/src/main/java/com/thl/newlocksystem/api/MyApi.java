@@ -14,8 +14,10 @@ import rx.Observable;
 
 public interface MyApi {
 
-    public static final String BASE_URL = "http://218.94.111.86:8091/";
+//    public static final String BASE_URL = "http://218.94.111.86:8091/";
 //    public static final String BASE_URL = "http://192.168.20.190:8080/";
+    public static final String BASE_URL = "http://192.168.20.190:8080/";
+
 
     //检查手机是否被注册
 //    @POST("user/check_phone_available")
@@ -29,4 +31,7 @@ public interface MyApi {
     @POST("LockUpdate/changeState")
     Observable<CheckUpdateResponse> changeState(@Body RequestBody jsonString);
 
+    //获取短信验证码
+    @POST("hsp/tool/sendCaptcha.do")
+    Observable<CheckUpdateResponse> sendCaptcha(@Body RequestBody jsonString);
 }

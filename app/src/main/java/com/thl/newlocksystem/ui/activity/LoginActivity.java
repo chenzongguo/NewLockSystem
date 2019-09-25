@@ -20,7 +20,7 @@ import com.thl.newlocksystem.util.UIUtils;
 import butterknife.BindView;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者
  * @描述 登录界面
  */
 public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> implements ILoginAtView {
