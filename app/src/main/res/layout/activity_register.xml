@@ -92,7 +92,7 @@
                 android:layout_marginBottom="30px"
                 android:layout_marginTop="40px"
                 android:background="@drawable/selector_login_btn"
-                android:enabled="false"
+                android:enabled="true"
                 android:text="获取验证码"
                 android:textSize="30px"/>
         </LinearLayout>
@@ -116,6 +116,7 @@
                 android:textSize="28px"/>
 
             <EditText
+                android:id="@+id/etVerifyCode"
                 android:layout_width="match_parent"
                 android:layout_height="90px"
                 android:background="@color/white"
@@ -126,12 +127,13 @@
                 android:textSize="28px" />
 
             <Button
+                android:id="@+id/btnCheckCaptcha"
                 android:layout_width="match_parent"
                 android:layout_height="90px"
                 android:layout_marginBottom="30px"
                 android:layout_marginTop="40px"
                 android:background="@drawable/selector_login_btn"
-                android:enabled="false"
+                android:enabled="true"
                 android:text="提交验证码"
                 android:textSize="30px"/>
         </LinearLayout>
@@ -150,6 +152,7 @@
 
 
             <EditText
+                android:id="@+id/etPwd"
                 android:layout_width="match_parent"
                 android:layout_height="90px"
                 android:background="@color/white"
@@ -160,6 +163,7 @@
                 android:textSize="28px" />
 
             <EditText
+                android:id="@+id/etPwd2"
                 android:layout_width="match_parent"
                 android:layout_height="90px"
                 android:layout_marginTop="10dp"
@@ -179,12 +183,13 @@
                 android:textSize="28px"/>
 
             <Button
+                android:id="@+id/btnUserRegister"
                 android:layout_width="match_parent"
                 android:layout_height="90px"
                 android:layout_marginBottom="30px"
                 android:layout_marginTop="40px"
                 android:background="@drawable/selector_login_btn"
-                android:enabled="false"
+                android:enabled="true"
                 android:text="确认提交"
                 android:textSize="30px"/>
         </LinearLayout>

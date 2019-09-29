@@ -42,6 +42,8 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
     TextView mTvProblems;
     @BindView(R2.id.btnLogin)
     Button mBtnLogin;
+    @BindView(R2.id.tv_register)
+    TextView mTvRegister;
     @BindView(R2.id.tvOtherLogin)
     TextView mTvOtherLogin;
 
@@ -90,6 +92,7 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
         });
 
         mBtnLogin.setOnClickListener(v -> mPresenter.login());
+        mTvRegister.setOnClickListener(v -> mPresenter.register());
     }
 
     private boolean canLogin() {

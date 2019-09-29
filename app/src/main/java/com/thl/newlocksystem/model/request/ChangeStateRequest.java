@@ -25,5 +25,4 @@ public class ChangeStateRequest {
         this.update_status = update_status;
     }
 
-
 }

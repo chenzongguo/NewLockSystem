@@ -8,10 +8,13 @@ import android.widget.RelativeLayout;
 import com.jaeger.library.StatusBarUtil;
 import com.thl.newlocksystem.R;
 import com.thl.newlocksystem.R2;
+import com.thl.newlocksystem.api.ApiRetrofit;
 import com.thl.newlocksystem.ui.base.BaseActivity;
 import com.thl.newlocksystem.ui.base.BasePresenter;
 
 import butterknife.BindView;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * @创建者 CSDN_LQR
@@ -44,6 +47,32 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void init() {
         mayRequestPermission(downloadApkPermission);
+//        89CA7BFA98871245FF2B80F3167FB912
+//        ApiRetrofit.getInstance().getToken("E4C885607F307C27D77E891AB2EB6F4C")
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(baseResponse -> {
+//                    String code = baseResponse.getCode();
+//                    if("000".equals(code)){
+////                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
+////                        registerReceiver();
+//                    }else{
+////                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+
+//        ApiRetrofit.getInstance().checkCaptcha("15094307279","733631")
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(baseResponse -> {
+//                    String code = baseResponse.getCode();
+//                    if("000".equals(code)){
+////                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
+////                        registerReceiver();
+//                    }else{
+////                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
     }
 
     @Override

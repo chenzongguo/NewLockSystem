@@ -3,7 +3,7 @@ package com.thl.newlocksystem.model.response;
 public class CheckUpdateResponse {
     private String code;
 
-    private String message;
+    private String errMessage;
 
     private Data data;
 
@@ -16,11 +16,11 @@ public class CheckUpdateResponse {
     }
 
     public String getMessage() {
-        return message;
+        return errMessage;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.errMessage = message;
     }
 
     public Data getData() {

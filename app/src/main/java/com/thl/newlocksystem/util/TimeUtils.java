@@ -37,6 +37,20 @@ public class TimeUtils {
         String str = format.format(date);
         return str;
     }
+
+    /**
+     * 获取当前系统时间
+     *
+     * @Description:
+     * @Author 13050629
+     * @Date 2014-7-28
+     */
+    public static String getDateTime16(){
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss" ,Locale.CHINA);
+        String str = format.format(date);
+        return str;
+    }
 //
 //    /**
 //     * 得到仿微信日期格式输出

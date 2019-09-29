@@ -20,11 +20,27 @@ public class RegisterActivity extends BaseActivity<IRegisterAtView, RegisterAtPr
     @BindView(R2.id.btnGetVerifyCode)
     Button mBtnGetVerifyCode;
 
+    @BindView(R2.id.etVerifyCode)
+    EditText mEtVerifyCode;
+
+    @BindView(R2.id.btnCheckCaptcha)
+    Button mBtnCheckCaptcha;
+
+    @BindView(R2.id.etPwd)
+    EditText mEtPwd;
+
+    @BindView(R2.id.etPwd2)
+    EditText mEtPwd2;
+
+    @BindView(R2.id.btnUserRegister)
+    Button mBtnUserRegister;
 
 
     @Override
     public void initListener() {
         mBtnGetVerifyCode.setOnClickListener(v -> mPresenter.GetVerifyCode());
+        mBtnCheckCaptcha.setOnClickListener(v -> mPresenter.GetVerifyCode());
+        mBtnUserRegister.setOnClickListener(v -> mPresenter.register());
     }
 
 
@@ -35,7 +51,7 @@ public class RegisterActivity extends BaseActivity<IRegisterAtView, RegisterAtPr
 
     @Override
     protected RegisterAtPresenter createPresenter() {
-        return null;
+        return new RegisterAtPresenter(this);
     }
 
     @Override
@@ -50,16 +66,16 @@ public class RegisterActivity extends BaseActivity<IRegisterAtView, RegisterAtPr
 
     @Override
     public EditText getEtVerifyCode() {
-        return null;
+        return mEtVerifyCode;
     }
 
     @Override
     public EditText getEtPwd() {
-        return null;
+        return mEtPwd;
     }
 
     @Override
     public EditText getEtPwd2() {
-        return null;
+        return mEtPwd2;
     }
 }

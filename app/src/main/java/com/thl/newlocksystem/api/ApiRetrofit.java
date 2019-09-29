@@ -3,9 +3,20 @@ package com.thl.newlocksystem.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thl.newlocksystem.api.base.BaseApiRetrofit;
+import com.thl.newlocksystem.model.request.BaseRequest;
 import com.thl.newlocksystem.model.request.ChangeStateRequest;
+import com.thl.newlocksystem.model.request.CheckCaptchaRequest;
 import com.thl.newlocksystem.model.request.CheckUpdateRequest;
+import com.thl.newlocksystem.model.request.GetOrderListRequest;
+import com.thl.newlocksystem.model.request.GetOrderRequest;
+import com.thl.newlocksystem.model.request.GetTokenRequest;
+import com.thl.newlocksystem.model.request.SendCaptchaRequest;
+import com.thl.newlocksystem.model.request.UserLoginRequest;
+import com.thl.newlocksystem.model.request.UserRegisterRequest;
+import com.thl.newlocksystem.model.response.BaseResponse;
 import com.thl.newlocksystem.model.response.CheckUpdateResponse;
+import com.thl.newlocksystem.model.response.UserLoginResponse;
+import com.thl.newlocksystem.util.LogUtils;
 
 import okhttp3.RequestBody;
 import retrofit2.Retrofit;
@@ -50,7 +61,9 @@ public class ApiRetrofit extends BaseApiRetrofit {
     }
 
     private RequestBody getRequestBody(Object obj) {
-        String route = new Gson().toJson(obj);
+        String data = new Gson().toJson(obj);
+        String route = new Gson().toJson(new BaseRequest("89CA7BFA98871245FF2B80F3167FB912",data));
+        LogUtils.sf(route);
         RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),route);
 //        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), route);
         return body;
@@ -68,8 +81,41 @@ public class ApiRetrofit extends BaseApiRetrofit {
         return mApi.changeState(getRequestBody(new ChangeStateRequest(imei,update_status)));
     }
 
-    //更改设备更新状态
-    public Observable<CheckUpdateResponse> sendCaptcha(String imei, String update_status) {
-        return mApi.sendCaptcha(getRequestBody(new ChangeStateRequest(imei,update_status)));
+    //获取token
+    public Observable<BaseResponse> getToken(String appid) {
+        return mApi.getToken(getRequestBody(new GetTokenRequest(appid)));
     }
+
+    //获取验证码
+    public Observable<BaseResponse> sendCaptcha( String phone) {
+        return mApi.sendCaptcha(getRequestBody(new SendCaptchaRequest(phone)));
+    }
+
+    //验证验证码
+    public Observable<BaseResponse> checkCaptcha( String phone, String captcha) {
+        return mApi.checkCaptcha(getRequestBody(new CheckCaptchaRequest(phone,captcha)));
+    }
+
+    //用户注册
+    public Observable<BaseResponse> userRegister( String phone, String pwd) {
+        return mApi.userRegister(getRequestBody(new UserRegisterRequest(phone,pwd)));
+    }
+
+    //用户登录
+    public Observable<UserLoginResponse> userLogin(UserLoginRequest userLoginRequest) {
+        return mApi.userLogin(getRequestBody(userLoginRequest));
+    }
+
+    //商户信息完善
+
+    //订单信息查询
+    public Observable<BaseResponse> getOrderList( String phone, String captcha) {
+        return mApi.getOrderList(getRequestBody(new GetOrderListRequest()));
+    }
+
+    //订单详情信息查询
+    public Observable<BaseResponse> getOrder( String phone, String captcha) {
+        return mApi.getOrder(getRequestBody(new GetOrderRequest()));
+    }
+
 }
