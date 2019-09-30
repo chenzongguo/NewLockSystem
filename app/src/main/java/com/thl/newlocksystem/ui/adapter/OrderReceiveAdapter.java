@@ -9,23 +9,31 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.thl.newlocksystem.R;
+import com.thl.newlocksystem.model.Bean.OrderBean;
+
+import java.util.List;
 
 
 public class OrderReceiveAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private OnListenerClick onClick;
+    private List<OrderBean> OrderBeanlist;
 
     public void setOnClick(OnListenerClick onClick) {
         this.onClick = onClick;
     }
 
-    public OrderReceiveAdapter(Context context) {
+    public OrderReceiveAdapter(Context context, List<OrderBean> orderBeanlist) {
         // TODO Auto-generated constructor stub
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.OrderBeanlist = orderBeanlist;
     }
     @Override
     public int getCount() {
-        return 4;
+        if(OrderBeanlist!=null)
+            return OrderBeanlist.size();
+        else
+            return 0;
     }
 
     @Override
@@ -44,7 +52,10 @@ public class OrderReceiveAdapter extends BaseAdapter {
         if(convertView == null){
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.item_order, null);
-            holder.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
+            holder.tvTime = (TextView) convertView.findViewById(R.id.tvTime);
+            holder.tvAddress = (TextView) convertView.findViewById(R.id.tvAddress);
+            holder.tvPaymentPrice = (TextView) convertView.findViewById(R.id.tvPaymentPrice);
+            holder.tvCorpName = (TextView) convertView.findViewById(R.id.tvCorpName);
             holder.btn_receiveOrder = convertView.findViewById(R.id.btn_receive_order);
             convertView.setTag(holder);
         }else{
@@ -58,10 +69,14 @@ public class OrderReceiveAdapter extends BaseAdapter {
                 onClick.OrderReceive();
             }
         });
+        holder.tvTime.setText(OrderBeanlist.get(position).getDoor_time());
+        holder.tvAddress.setText(OrderBeanlist.get(position).getCorp_addr());
+        holder.tvPaymentPrice.setText("￥"+OrderBeanlist.get(position).getPayment_price());
+        holder.tvCorpName.setText(OrderBeanlist.get(position).getCorp_name());
         return convertView;
     }
     class ViewHolder{
-        TextView tv_time;
+        TextView tvTime,tvAddress,tvPaymentPrice,tvCorpName;
         Button btn_receiveOrder;
     }
 

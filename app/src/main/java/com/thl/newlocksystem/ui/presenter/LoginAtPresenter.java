@@ -1,10 +1,12 @@
 package com.thl.newlocksystem.ui.presenter;
 
 import android.text.TextUtils;
+import android.widget.Toast;
 
 
 import com.thl.newlocksystem.R;
 import com.thl.newlocksystem.api.ApiRetrofit;
+import com.thl.newlocksystem.app.AppConst;
 import com.thl.newlocksystem.db.DBManager;
 import com.thl.newlocksystem.db.model.SysUser;
 import com.thl.newlocksystem.model.request.UserLoginRequest;
@@ -50,28 +52,17 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
         .subscribe(userLoginResponse -> {
             String code = userLoginResponse.getCode();
             if("000".equals(code)){
+                AppConst.USER_TOKEN = userLoginResponse.getData().getUser_token();
+                AppConst.USER_ID = userLoginResponse.getData().getUser_id();
+                AppConst.ROLE_ID = userLoginResponse.getData().getRole_id();
+                mContext.jumpToActivityAndClearTask(MainActivity.class);
 //                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
 //                        registerReceiver();
             }else{
-//                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, userLoginResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        SysUser userBean = DBManager.getInstance().getSysUserByPwd(phone,pwd);
-        if(userBean!=null) {
-//            SharedPreferencesHelper.set(LoginActivity.this,
-//                    SPConstant.SYS_USER, SPConstant.User_Number, userBean.getUser_Number());
-//            SharedPreferencesHelper.set(LoginActivity.this,
-//                    SPConstant.SYS_USER, SPConstant.User_Power, userBean.getUser_Power());
-//            SharedPreferencesHelper.set(LoginActivity.this,
-//                    SPConstant.SYS_USER, SPConstant.User_Name, userBean.getUser_Name());
-//            mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
-            mContext.jumpToActivityAndClearTask(MainActivity.class);
-            mContext.finish();
-        }else{
-            mContext.jumpToActivityAndClearTask(MainActivity.class);
-            mContext.finish();
-        }
     }
 
     public void register(){

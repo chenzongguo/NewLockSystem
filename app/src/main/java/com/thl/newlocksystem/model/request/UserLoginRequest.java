@@ -1,11 +1,11 @@
 package com.thl.newlocksystem.model.request;
 
 public class UserLoginRequest {
-    private String type;
-    private String user_phone;
-    private String user_pwd;
-    private String openid;
-    private String head_portrait;
+    private String type="";
+    private String user_phone="";
+    private String user_pwd="";
+    private String openid="";
+    private String head_portrait="";
 
     public String getType() {
         return type;

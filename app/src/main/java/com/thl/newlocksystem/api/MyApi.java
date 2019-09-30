@@ -2,6 +2,8 @@ package com.thl.newlocksystem.api;
 
 import com.thl.newlocksystem.model.response.BaseResponse;
 import com.thl.newlocksystem.model.response.CheckUpdateResponse;
+import com.thl.newlocksystem.model.response.GetOrderListResponse;
+import com.thl.newlocksystem.model.response.GetOrderResponse;
 import com.thl.newlocksystem.model.response.UserLoginResponse;
 
 import okhttp3.RequestBody;
@@ -45,19 +47,27 @@ public interface MyApi {
     Observable<BaseResponse> checkCaptcha(@Body RequestBody jsonString);
 
     //用户注册
-    @POST("hsp/tool/userRegister.do")
+    @POST("hsp/user/userRegister.do")
     Observable<BaseResponse> userRegister(@Body RequestBody jsonString);
 
     //用户登录
-    @POST("hsp/tool/userLogin.do")
+    @POST("hsp/user/userLogin.do")
     Observable<UserLoginResponse> userLogin(@Body RequestBody jsonString);
 
     //订单信息查询
-    @POST("hsp/tool/getOrderList.do")
-    Observable<BaseResponse> getOrderList(@Body RequestBody jsonString);
+    @POST("hsp/order/getOrderList.do")
+    Observable<GetOrderListResponse> getOrderList(@Body RequestBody jsonString);
 
     //订单详情查询
-    @POST("hsp/tool/getOrder.do")
-    Observable<BaseResponse> getOrder(@Body RequestBody jsonString);
+    @POST("hsp/order/getOrder.do")
+    Observable<GetOrderResponse> getOrder(@Body RequestBody jsonString);
+
+    //商户接单
+    @POST("hsp/order/parnterReceipt.do")
+    Observable<BaseResponse> parnterReceipt(@Body RequestBody jsonString);
+
+    //商户接单
+    @POST("hsp/order/updateOrderRoomState.do")
+    Observable<BaseResponse> updateOrderRoomState(@Body RequestBody jsonString);
 
 }

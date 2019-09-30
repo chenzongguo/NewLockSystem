@@ -1,12 +1,12 @@
 package com.thl.newlocksystem.model.request;
 
 public class UserRegisterRequest {
-    private String type;//注册方式标识(1账号密码2微信)
-    private String user_phone;//登陆手机号
-    private String user_pwd;//登陆密码
-    private String role_id;//权限id
-    private String openid;//微信openid
-    private String head_portrait;//头像
+    private String type="";//注册方式标识(1账号密码2微信)
+    private String user_phone="";//登陆手机号
+    private String user_pwd="";//登陆密码
+    private String role_id="";//权限id
+    private String openid="";//微信openid
+    private String head_portrait="";//头像
 
     public UserRegisterRequest(String user_phone,String user_pwd){
         this.user_phone = user_phone;

@@ -18,10 +18,14 @@ public class AppConst {
     //全局数据获取
     public static final String FETCH_COMPLETE = "fetch_complete";
 
+    public static String USER_TOKEN ="";
+
+    public static String USER_ID ="";
+    public static String ROLE_ID ="";
+
     //好友
     public static final String APP_ID= "6QUeC3LptXW";
     public static final String APP_KEY = "JlnLa09uiww";
-    public static final String USER_ID = "A5xRxVFkqdv";
 
     //好友
     public static final String UPDATE_FRIEND = "update_friend";

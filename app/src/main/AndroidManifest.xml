@@ -51,6 +51,15 @@
             android:name=".ui.activity.MainActivity"
             android:screenOrientation="portrait">
         </activity>
+
+        <activity
+            android:name=".ui.activity.OrderDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.OrderNoConfirmActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".ui.activity.LockedActivity"
             android:screenOrientation="portrait">

@@ -10,11 +10,16 @@ import com.thl.newlocksystem.model.request.CheckUpdateRequest;
 import com.thl.newlocksystem.model.request.GetOrderListRequest;
 import com.thl.newlocksystem.model.request.GetOrderRequest;
 import com.thl.newlocksystem.model.request.GetTokenRequest;
+import com.thl.newlocksystem.model.request.ParnterReceiptRequest;
 import com.thl.newlocksystem.model.request.SendCaptchaRequest;
+import com.thl.newlocksystem.model.request.UpdateOrderRoomStateRequest;
 import com.thl.newlocksystem.model.request.UserLoginRequest;
 import com.thl.newlocksystem.model.request.UserRegisterRequest;
+import com.thl.newlocksystem.model.request.UserTokenRequest;
 import com.thl.newlocksystem.model.response.BaseResponse;
 import com.thl.newlocksystem.model.response.CheckUpdateResponse;
+import com.thl.newlocksystem.model.response.GetOrderListResponse;
+import com.thl.newlocksystem.model.response.GetOrderResponse;
 import com.thl.newlocksystem.model.response.UserLoginResponse;
 import com.thl.newlocksystem.util.LogUtils;
 
@@ -69,6 +74,16 @@ public class ApiRetrofit extends BaseApiRetrofit {
         return body;
     }
 
+    private RequestBody getUserTokenRequestBody(Object obj) {
+        String data = new Gson().toJson(obj);
+        String route = new Gson().toJson(new UserTokenRequest("89CA7BFA98871245FF2B80F3167FB912",data));
+        LogUtils.sf(route);
+        RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),route);
+//        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), route);
+        return body;
+    }
+
+
 
 
     //获取是否需要更新
@@ -109,13 +124,21 @@ public class ApiRetrofit extends BaseApiRetrofit {
     //商户信息完善
 
     //订单信息查询
-    public Observable<BaseResponse> getOrderList( String phone, String captcha) {
-        return mApi.getOrderList(getRequestBody(new GetOrderListRequest()));
+    public Observable<GetOrderListResponse> getOrderList(GetOrderListRequest getOrderListRequest) {
+        return mApi.getOrderList(getUserTokenRequestBody(getOrderListRequest));
     }
 
     //订单详情信息查询
-    public Observable<BaseResponse> getOrder( String phone, String captcha) {
-        return mApi.getOrder(getRequestBody(new GetOrderRequest()));
+    public Observable<GetOrderResponse> getOrder(GetOrderRequest getOrderRequest) {
+        return mApi.getOrder(getUserTokenRequestBody(getOrderRequest));
     }
 
+    //商户接单
+    public Observable<BaseResponse> parnterReceipt(ParnterReceiptRequest parnterReceiptRequest) {
+        return mApi.parnterReceipt(getUserTokenRequestBody(parnterReceiptRequest));
+    }
+    //商户接单
+    public Observable<BaseResponse> updateOrderRoomState(UpdateOrderRoomStateRequest updateOrderRoomStateRequest) {
+        return mApi.updateOrderRoomState(getUserTokenRequestBody(updateOrderRoomStateRequest));
+    }
 }
