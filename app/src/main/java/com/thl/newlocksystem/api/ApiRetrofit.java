@@ -121,6 +121,10 @@ public class ApiRetrofit extends BaseApiRetrofit {
         return mApi.userLogin(getRequestBody(userLoginRequest));
     }
 
+    //用户token验证登录
+    public Observable<BaseResponse> checkUserToken() {
+        return mApi.checkUserToken(getUserTokenRequestBody(""));
+    }
     //商户信息完善
 
     //订单信息查询

@@ -1,5 +1,6 @@
 package com.thl.newlocksystem.ui.fragment;
 
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.thl.newlocksystem.R;
@@ -16,9 +17,18 @@ public class HomePageFragment extends BaseFragment<HomePageFgView, HomePageFgPre
     @BindView(R2.id.lv_order_receive)
     ListView lv_OrderReceive;
 
+    @BindView(R2.id.img_NoOrder)
+    ImageView img_NoOrder;
+
     @Override
     public void onResume() {
         super.onResume();
+        mPresenter.getConversations();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         mPresenter.getConversations();
     }
 
@@ -35,5 +45,10 @@ public class HomePageFragment extends BaseFragment<HomePageFgView, HomePageFgPre
     @Override
     public ListView getLvOrderReceive() {
         return lv_OrderReceive;
+    }
+
+    @Override
+    public ImageView getImaNoOrder() {
+        return img_NoOrder;
     }
 }

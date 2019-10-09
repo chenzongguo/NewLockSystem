@@ -1,5 +1,6 @@
 package com.thl.newlocksystem.ui.fragment;
 
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.thl.newlocksystem.R;
@@ -15,9 +16,19 @@ public class OrderAllocationFragment extends BaseFragment<OrderAllocationFgView,
 
     @BindView(R2.id.lv_order_allocation)
     ListView lv_OrderAllocation;
+
+    @BindView(R2.id.img_NoOrder)
+    ImageView img_NoOrder;
+
     @Override
     public void onResume() {
         super.onResume();
+        mPresenter.getConversations();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         mPresenter.getConversations();
     }
 
@@ -34,5 +45,10 @@ public class OrderAllocationFragment extends BaseFragment<OrderAllocationFgView,
     @Override
     public ListView getLvOrderAllocation() {
         return lv_OrderAllocation;
+    }
+
+    @Override
+    public ImageView getImaNoOrder() {
+        return img_NoOrder;
     }
 }

@@ -1,19 +1,19 @@
 package com.thl.newlocksystem.ui.activity;
 
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.thl.newlocksystem.R;
 import com.thl.newlocksystem.R2;
 import com.thl.newlocksystem.ui.base.BaseActivity;
+import com.thl.newlocksystem.ui.presenter.NoArriveCorpAtPresenter;
 import com.thl.newlocksystem.ui.presenter.OrderNoConfirmAtPresenter;
+import com.thl.newlocksystem.ui.view.INoArriveCorpAtView;
 import com.thl.newlocksystem.ui.view.IOrderNoConfirmAtView;
 
 import butterknife.BindView;
 
-public class OrderNoConfirmActivity extends BaseActivity<IOrderNoConfirmAtView, OrderNoConfirmAtPresenter> implements IOrderNoConfirmAtView {
+public class NoArriveCorpActivity extends BaseActivity<INoArriveCorpAtView, NoArriveCorpAtPresenter> implements INoArriveCorpAtView {
 
     @BindView(R2.id.lv_order_no_confirm)
     ListView lv_order_no_confirm;
@@ -33,8 +33,8 @@ public class OrderNoConfirmActivity extends BaseActivity<IOrderNoConfirmAtView, 
     }
 
     @Override
-    protected OrderNoConfirmAtPresenter createPresenter() {
-        return new OrderNoConfirmAtPresenter(this);
+    protected NoArriveCorpAtPresenter createPresenter() {
+        return new NoArriveCorpAtPresenter(this);
     }
 
     @Override
@@ -42,8 +42,9 @@ public class OrderNoConfirmActivity extends BaseActivity<IOrderNoConfirmAtView, 
         return R.layout.at_order_no_confirm;
     }
 
+
     @Override
-    public ListView getLvOrderNoConfirm() {
+    public ListView getLvNoArriveCorp() {
         return lv_order_no_confirm;
     }
 

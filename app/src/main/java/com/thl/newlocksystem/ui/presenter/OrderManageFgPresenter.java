@@ -1,5 +1,6 @@
 package com.thl.newlocksystem.ui.presenter;
 
+import com.thl.newlocksystem.ui.activity.NoArriveCorpActivity;
 import com.thl.newlocksystem.ui.activity.OrderNoConfirmActivity;
 import com.thl.newlocksystem.ui.base.BaseActivity;
 import com.thl.newlocksystem.ui.base.BasePresenter;
@@ -14,5 +15,7 @@ public class OrderManageFgPresenter extends BasePresenter<OrderManageFgView> {
         mContext.jumpToActivityAndClearTop(OrderNoConfirmActivity.class);
     }
 
-
+    public void toActivity2(){
+        mContext.jumpToActivityAndClearTop(NoArriveCorpActivity.class);
+    }
 }

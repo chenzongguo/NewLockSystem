@@ -49,7 +49,12 @@ public class OrderAllocationFgPresenter extends BasePresenter<OrderAllocationFgV
                         orderBeanList =  getOrderListResponse.getData().getPaging_data();
 //                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
 //                        registerReceiver();
-                        setAdapter();
+                        if(orderBeanList!=null && orderBeanList.size()>0){
+                            setAdapter();
+                            getView().getImaNoOrder().setVisibility(View.GONE);
+                        }else{
+                            getView().getImaNoOrder().setVisibility(View.VISIBLE);
+                        }
                     }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                     }

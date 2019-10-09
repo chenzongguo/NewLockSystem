@@ -11,6 +11,14 @@
         android:layout_height="250dp"
         android:background="@drawable/ic_nj_banner"
         />
+
+    <ImageView
+        android:id="@+id/img_NoOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/no_order"
+        />
+
     <ListView
         android:id="@+id/lv_order_receive"
         android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.thl.newlocksystem.model.Bean;
 
+import java.util.List;
+
 public class OrderRoomBean {
     public String getOrder_room_id() {
         return order_room_id;
@@ -49,11 +51,11 @@ public class OrderRoomBean {
         this.room_area_id = room_area_id;
     }
 
-    public String getOrder_goods_data() {
+    public List<OrderGoodsBean> getOrder_goods_data() {
         return order_goods_data;
     }
 
-    public void setOrder_goods_data(String order_goods_data) {
+    public void setOrder_goods_data(List<OrderGoodsBean> order_goods_data) {
         this.order_goods_data = order_goods_data;
     }
 
@@ -79,7 +81,7 @@ public class OrderRoomBean {
     private String room_type_id ="";
     private String bed_num ="";
     private String room_area_id ="";
-    private String order_goods_data ="";
+    private List<OrderGoodsBean> order_goods_data;
     private String order_services_data ="";
     private String rating_data ="";
 }

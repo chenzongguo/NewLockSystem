@@ -1,7 +1,5 @@
 package com.thl.newlocksystem.ui.presenter;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,19 +13,18 @@ import com.thl.newlocksystem.ui.adapter.OrderReceiveAdapter;
 import com.thl.newlocksystem.ui.base.BaseActivity;
 import com.thl.newlocksystem.ui.base.BasePresenter;
 import com.thl.newlocksystem.ui.view.INoArriveCorpAtView;
-import com.thl.newlocksystem.ui.view.IOrderNoConfirmAtView;
 
 import java.util.List;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class OrderNoConfirmAtPresenter extends BasePresenter<IOrderNoConfirmAtView> {
+public class NoArriveCorpAtPresenter extends BasePresenter<INoArriveCorpAtView> {
 
     private OrderReceiveAdapter orderReceiveAdapter;
     private List<OrderBean> orderBeanList;
 
-    public OrderNoConfirmAtPresenter(BaseActivity context) {
+    public NoArriveCorpAtPresenter(BaseActivity context) {
         super(context);
     }
     public void getConversations() {
@@ -38,7 +35,7 @@ public class OrderNoConfirmAtPresenter extends BasePresenter<IOrderNoConfirmAtVi
         getOrderListRequest.setType("1");
         getOrderListRequest.setSelect_number("10");
         getOrderListRequest.setStart_number("0");
-        getOrderListRequest.setOrder_state("4");
+        getOrderListRequest.setOrder_state("5");
         ApiRetrofit.getInstance().getOrderList(getOrderListRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -64,15 +61,15 @@ public class OrderNoConfirmAtPresenter extends BasePresenter<IOrderNoConfirmAtVi
         if(orderReceiveAdapter == null)
             orderReceiveAdapter = new OrderReceiveAdapter(mContext,orderBeanList);
 //        orderReceiveAdapter.setOnClick(this);
-        getView().getLvOrderNoConfirm().setAdapter(orderReceiveAdapter);
-        getView().getLvOrderNoConfirm().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        getView().getLvNoArriveCorp().setAdapter(orderReceiveAdapter);
+        getView().getLvNoArriveCorp().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(mContext,"长按点击事件",Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
-        getView().getLvOrderNoConfirm().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        getView().getLvNoArriveCorp().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(mContext,"listview点击事件",Toast.LENGTH_SHORT).show();

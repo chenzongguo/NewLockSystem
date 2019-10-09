@@ -1,6 +1,7 @@
 package com.thl.newlocksystem.ui.activity;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -11,6 +12,7 @@ import com.thl.newlocksystem.R2;
 import com.thl.newlocksystem.api.ApiRetrofit;
 import com.thl.newlocksystem.ui.base.BaseActivity;
 import com.thl.newlocksystem.ui.base.BasePresenter;
+import com.thl.newlocksystem.util.LogUtils;
 
 import butterknife.BindView;
 import rx.android.schedulers.AndroidSchedulers;
@@ -21,6 +23,8 @@ import rx.schedulers.Schedulers;
  * @描述 微信闪屏页
  */
 public class SplashActivity extends BaseActivity {
+
+    private  boolean userTokenIsOk = false;
 
     @BindView(R2.id.rlButton)
     RelativeLayout mRlButton;
@@ -41,38 +45,31 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void requestPermissionResult(boolean allowPermission) {
         if (allowPermission) {
+            onPermissionSuccess();
         }
     }
 
     @Override
     public void init() {
-        mayRequestPermission(downloadApkPermission);
-//        89CA7BFA98871245FF2B80F3167FB912
-//        ApiRetrofit.getInstance().getToken("E4C885607F307C27D77E891AB2EB6F4C")
+//                ApiRetrofit.getInstance().checkUserToken()
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(baseResponse -> {
 //                    String code = baseResponse.getCode();
 //                    if("000".equals(code)){
+//                        userTokenIsOk = true;
 ////                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
 ////                        registerReceiver();
 //                    }else{
+//                        userTokenIsOk = false;
 ////                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
 //                    }
 //                });
+        if(mayRequestPermission(downloadApkPermission)){
+            onPermissionSuccess();
+        }
 
-//        ApiRetrofit.getInstance().checkCaptcha("15094307279","733631")
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(baseResponse -> {
-//                    String code = baseResponse.getCode();
-//                    if("000".equals(code)){
-////                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
-////                        registerReceiver();
-//                    }else{
-////                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+
     }
 
     @Override
@@ -83,6 +80,42 @@ public class SplashActivity extends BaseActivity {
         mRlButton.startAnimation(alphaAnimation);
     }
 
+    public void onPermissionSuccess() {
+        final ProgressDialog mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setTitle("loading register data...");
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.show();
+
+                ApiRetrofit.getInstance().checkUserToken()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(baseResponse -> {
+                    String code = baseResponse.getCode();
+                    if("000".equals(code)){
+                        mProgressDialog.cancel();
+                        jumpToActivity(MainActivity.class);
+                        finish();
+                    }else{
+                        mProgressDialog.cancel();
+                        jumpToActivity(LoginActivity.class);
+                        finish();
+                    }
+                });
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                SplashActivity.this.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        mProgressDialog.cancel();
+//                        jumpToActivity(LoginActivity.class);
+//                        finish();
+//                    }
+//                });
+//            }
+//        }).start();
+    }
     @Override
     public void initListener() {
         mBtnLogin.setOnClickListener(v -> {

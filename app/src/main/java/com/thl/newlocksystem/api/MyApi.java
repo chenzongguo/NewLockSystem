@@ -20,7 +20,7 @@ public interface MyApi {
 
 //    public static final String BASE_URL = "http://218.94.111.86:8091/";
 //    public static final String BASE_URL = "http://192.168.20.190:8080/";
-    public static final String BASE_URL = "http://192.168.20.190:8080/";
+    public static final String BASE_URL = "http://218.94.111.86:8091/";
 
 
     //检查手机是否被注册
@@ -53,6 +53,10 @@ public interface MyApi {
     //用户登录
     @POST("hsp/user/userLogin.do")
     Observable<UserLoginResponse> userLogin(@Body RequestBody jsonString);
+
+    //token登录
+    @POST("hsp/tool/checkUserToken.do")
+    Observable<BaseResponse> checkUserToken(@Body RequestBody jsonString);
 
     //订单信息查询
     @POST("hsp/order/getOrderList.do")

@@ -135,7 +135,8 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
 ////                        registerReceiver();
 //                        setAdapter();
 //                        initView(getOrderResponse);
-
+                            getView().getBtnParnterReceipt().setText("订单待确认");
+                            getView().getBtnParnterReceipt().setEnabled(false);
                             Toast.makeText(mContext, "派单成功", Toast.LENGTH_SHORT).show();
                         }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
