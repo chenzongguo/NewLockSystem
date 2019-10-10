@@ -1,9 +1,12 @@
 package com.thl.newlocksystem.ui.presenter;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.thl.newlocksystem.R;
 import com.thl.newlocksystem.api.ApiRetrofit;
 import com.thl.newlocksystem.model.Bean.OrderRoomBean;
 import com.thl.newlocksystem.model.request.GetOrderListRequest;
@@ -15,6 +18,7 @@ import com.thl.newlocksystem.ui.activity.OrderDetailActivity;
 import com.thl.newlocksystem.ui.adapter.OrderRoomAdapter;
 import com.thl.newlocksystem.ui.base.BaseActivity;
 import com.thl.newlocksystem.ui.base.BasePresenter;
+import com.thl.newlocksystem.ui.dialog.UserDialog;
 import com.thl.newlocksystem.ui.view.IOrderDetailAtView;
 
 import java.util.List;
@@ -119,31 +123,61 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
                     });
         }else{
 
-            UpdateOrderRoomStateRequest updateOrderRoomStateRequest = new UpdateOrderRoomStateRequest();
-            updateOrderRoomStateRequest.setType("1");
-            updateOrderRoomStateRequest.setUser_id("5");
-            updateOrderRoomStateRequest.setOrder_id(getOrderResponse.getData().getOrder_id());
-            updateOrderRoomStateRequest.setOrder_room_id(orderRoomBeanList.get(0).getOrder_room_id());
-            ApiRetrofit.getInstance().updateOrderRoomState(updateOrderRoomStateRequest)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(getBaseResponse -> {
-                        String code = getBaseResponse.getCode();
-                        if("000".equals(code)){
-//                        orderRoomBeanList =  getOrderResponse.getData().getCorp_room_data();
-////                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
-////                        registerReceiver();
-//                        setAdapter();
-//                        initView(getOrderResponse);
-                            getView().getBtnParnterReceipt().setText("订单待确认");
-                            getView().getBtnParnterReceipt().setEnabled(false);
-                            Toast.makeText(mContext, "派单成功", Toast.LENGTH_SHORT).show();
-                        }else{
-//                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(mContext, getBaseResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+//            UpdateOrderRoomStateRequest updateOrderRoomStateRequest = new UpdateOrderRoomStateRequest();
+//            updateOrderRoomStateRequest.setType("1");
+//            updateOrderRoomStateRequest.setUser_id("5");
+//            updateOrderRoomStateRequest.setOrder_id(getOrderResponse.getData().getOrder_id());
+//            updateOrderRoomStateRequest.setOrder_room_id(orderRoomBeanList.get(0).getOrder_room_id());
+//            ApiRetrofit.getInstance().updateOrderRoomState(updateOrderRoomStateRequest)
+//                    .subscribeOn(Schedulers.io())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe(getBaseResponse -> {
+//                        String code = getBaseResponse.getCode();
+//                        if("000".equals(code)){
+////                        orderRoomBeanList =  getOrderResponse.getData().getCorp_room_data();
+//////                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
+//////                        registerReceiver();
+////                        setAdapter();
+////                        initView(getOrderResponse);
+//                            getView().getBtnParnterReceipt().setText("订单待确认");
+//                            getView().getBtnParnterReceipt().setEnabled(false);
+//                            Toast.makeText(mContext, "派单成功", Toast.LENGTH_SHORT).show();
+//                        }else{
+////                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(mContext, getBaseResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+            dialogChoice();
+//            UserDialog userDialog = new UserDialog(mContext, View.inflate(mContext, R.layout.dialog_user, null),R.style.MyDialog);
+//            userDialog.setTitle("请选择需要指派的保洁员");
+//            userDialog.show();
         }
 
+    }
+
+    private void dialogChoice() {
+        final String items[] = {"陈宗国1", "陈宗国2", "陈宗国3", "陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4"
+        ,"陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国4","陈宗国20"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext,3);
+        builder.setTitle("保洁员列表");
+//        builder.setIcon(R.mipmap.ic_launcher);
+        builder.setSingleChoiceItems(items, 0,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+//                        Toast.makeText(MainActivity.this, items[which],
+//                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+//                Toast.makeText(MainActivity.this, "确定", Toast.LENGTH_SHORT)
+//                        .show();
+            }
+        });
+        builder.create().show();
     }
 }

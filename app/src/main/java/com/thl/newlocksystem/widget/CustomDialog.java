@@ -1,5 +1,6 @@
 package com.thl.newlocksystem.widget;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
