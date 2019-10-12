@@ -4,6 +4,8 @@ import com.thl.newlocksystem.model.response.BaseResponse;
 import com.thl.newlocksystem.model.response.CheckUpdateResponse;
 import com.thl.newlocksystem.model.response.GetOrderListResponse;
 import com.thl.newlocksystem.model.response.GetOrderResponse;
+import com.thl.newlocksystem.model.response.GetOrderStateNumResponse;
+import com.thl.newlocksystem.model.response.GetUserListResponse;
 import com.thl.newlocksystem.model.response.UserLoginResponse;
 
 import okhttp3.RequestBody;
@@ -54,6 +56,10 @@ public interface MyApi {
     @POST("hsp/user/userLogin.do")
     Observable<UserLoginResponse> userLogin(@Body RequestBody jsonString);
 
+    //用户登录
+    @POST("hsp/user/getUserList.do")
+    Observable<GetUserListResponse> getUserList(@Body RequestBody jsonString);
+
     //token登录
     @POST("hsp/tool/checkUserToken.do")
     Observable<BaseResponse> checkUserToken(@Body RequestBody jsonString);
@@ -65,6 +71,10 @@ public interface MyApi {
     //订单详情查询
     @POST("hsp/order/getOrder.do")
     Observable<GetOrderResponse> getOrder(@Body RequestBody jsonString);
+
+    //订单状态计数查询
+    @POST("hsp/order/getOrderStateNum.do")
+    Observable<GetOrderStateNumResponse> getOrderStateNum(@Body RequestBody jsonString);
 
     //商户接单
     @POST("hsp/order/parnterReceipt.do")

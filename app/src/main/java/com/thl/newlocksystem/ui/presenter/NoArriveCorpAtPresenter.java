@@ -31,11 +31,12 @@ public class NoArriveCorpAtPresenter extends BasePresenter<INoArriveCorpAtView> 
         loadData();
     }
     private void  loadData(){
+        String order_state = mContext.getIntent().getStringExtra("order_state");
         GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
         getOrderListRequest.setType("1");
         getOrderListRequest.setSelect_number("10");
         getOrderListRequest.setStart_number("0");
-        getOrderListRequest.setOrder_state("5");
+        getOrderListRequest.setOrder_state(order_state);
         ApiRetrofit.getInstance().getOrderList(getOrderListRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

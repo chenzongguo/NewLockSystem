@@ -1,23 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/line"
+    android:background="@drawable/corners_round"
     android:padding="10dp">
-    <TextView
-        android:id="@+id/tvUserName"
+
+
+    <ImageView
+        android:id="@+id/imgHeadPortrait"
+        android:layout_width="48sp"
+        android:layout_height="48sp"
+        android:src="@mipmap/head_portrait"
+        />
+    <LinearLayout
+        android:layout_alignRight="@id/imgHeadPortrait"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="陈宗国"
-        android:layout_alignParentLeft="true"
-        android:textSize="28sp" />
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="陈宗国"
+            android:textSize="@dimen/text_20"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="好评率100%"
+                android:textSize="@dimen/text_12"/>
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="5dp"
+                android:background="@color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="共接单100次"
+                android:textSize="@dimen/text_12"/>
+        </LinearLayout>
+    </LinearLayout>
 
     <CheckBox
 
         android:id="@+id/choose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
         android:focusable="false"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true" />
-</RelativeLayout>
+</LinearLayout>

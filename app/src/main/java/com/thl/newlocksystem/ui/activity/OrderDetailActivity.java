@@ -1,17 +1,21 @@
 package com.thl.newlocksystem.ui.activity;
 
+import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 import com.thl.newlocksystem.R;
 import com.thl.newlocksystem.R2;
 import com.thl.newlocksystem.ui.base.BaseActivity;
 import com.thl.newlocksystem.ui.presenter.OederDetailAtPresenter;
 import com.thl.newlocksystem.ui.presenter.RegisterAtPresenter;
 import com.thl.newlocksystem.ui.view.IOrderDetailAtView;
+import com.thl.newlocksystem.util.UIUtils;
 
+import androidx.annotation.Nullable;
 import butterknife.BindView;
 
 public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederDetailAtPresenter> implements IOrderDetailAtView {
@@ -42,6 +46,12 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     @BindView(R2.id.lvOrderRoom)
     ListView lvOrderRoom;
 
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.colorPrimary), 10);
+    }
 
     @Override
     protected void onResume() {

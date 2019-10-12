@@ -59,19 +59,19 @@ public class OrderRoomBean {
         this.order_goods_data = order_goods_data;
     }
 
-    public String getOrder_services_data() {
+    public List<OrderServicesBean> getOrder_services_data() {
         return order_services_data;
     }
 
-    public void setOrder_services_data(String order_services_data) {
+    public void setOrder_services_data(List<OrderServicesBean> order_services_data) {
         this.order_services_data = order_services_data;
     }
 
-    public String getRating_data() {
+    public List<RatingBean> getRating_data() {
         return rating_data;
     }
 
-    public void setRating_data(String rating_data) {
+    public void setRating_data(List<RatingBean> rating_data) {
         this.rating_data = rating_data;
     }
 
@@ -82,6 +82,6 @@ public class OrderRoomBean {
     private String bed_num ="";
     private String room_area_id ="";
     private List<OrderGoodsBean> order_goods_data;
-    private String order_services_data ="";
-    private String rating_data ="";
+    private List<OrderServicesBean> order_services_data;
+    private List<RatingBean> rating_data ;
 }

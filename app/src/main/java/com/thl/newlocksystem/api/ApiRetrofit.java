@@ -9,7 +9,9 @@ import com.thl.newlocksystem.model.request.CheckCaptchaRequest;
 import com.thl.newlocksystem.model.request.CheckUpdateRequest;
 import com.thl.newlocksystem.model.request.GetOrderListRequest;
 import com.thl.newlocksystem.model.request.GetOrderRequest;
+import com.thl.newlocksystem.model.request.GetOrderStateNumRequest;
 import com.thl.newlocksystem.model.request.GetTokenRequest;
+import com.thl.newlocksystem.model.request.GetUserListRequest;
 import com.thl.newlocksystem.model.request.ParnterReceiptRequest;
 import com.thl.newlocksystem.model.request.SendCaptchaRequest;
 import com.thl.newlocksystem.model.request.UpdateOrderRoomStateRequest;
@@ -20,6 +22,8 @@ import com.thl.newlocksystem.model.response.BaseResponse;
 import com.thl.newlocksystem.model.response.CheckUpdateResponse;
 import com.thl.newlocksystem.model.response.GetOrderListResponse;
 import com.thl.newlocksystem.model.response.GetOrderResponse;
+import com.thl.newlocksystem.model.response.GetOrderStateNumResponse;
+import com.thl.newlocksystem.model.response.GetUserListResponse;
 import com.thl.newlocksystem.model.response.UserLoginResponse;
 import com.thl.newlocksystem.util.LogUtils;
 
@@ -121,6 +125,10 @@ public class ApiRetrofit extends BaseApiRetrofit {
         return mApi.userLogin(getRequestBody(userLoginRequest));
     }
 
+    //用户登录
+    public Observable<GetUserListResponse> getUserList(GetUserListRequest getUserListRequest) {
+        return mApi.getUserList(getUserTokenRequestBody(getUserListRequest));
+    }
     //用户token验证登录
     public Observable<BaseResponse> checkUserToken() {
         return mApi.checkUserToken(getUserTokenRequestBody(""));
@@ -135,6 +143,11 @@ public class ApiRetrofit extends BaseApiRetrofit {
     //订单详情信息查询
     public Observable<GetOrderResponse> getOrder(GetOrderRequest getOrderRequest) {
         return mApi.getOrder(getUserTokenRequestBody(getOrderRequest));
+    }
+
+    //订单详情信息查询
+    public Observable<GetOrderStateNumResponse> getOrderStateNum(GetOrderStateNumRequest getOrderStateNumRequest) {
+        return mApi.getOrderStateNum(getUserTokenRequestBody(getOrderStateNumRequest));
     }
 
     //商户接单
