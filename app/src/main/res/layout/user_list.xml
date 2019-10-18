@@ -10,7 +10,7 @@
         />
 
                 <ListView
-                    android:id="@+id/lvOrderRoom"
+                    android:id="@+id/lv_user"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_above="@id/llyBottom"
@@ -40,13 +40,14 @@
 
 
             <TextView
+                android:id="@+id/tvCleanerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:textSize="@dimen/text_20"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
-                android:text="当前指派人员为陈宗国"/>
+                android:text="没有选中保洁员"/>
         </LinearLayout>
 
 

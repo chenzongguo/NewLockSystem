@@ -2,45 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/corners_round"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="10dp"
     android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/rlychoose"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-        <CheckBox
-            android:id="@+id/choose"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:focusable="false"
-            />
-    </RelativeLayout>
-
     <LinearLayout
-        android:layout_alignRight="@id/rlychoose"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
         android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:textSize="@dimen/text_20"
-            android:text="房间名称:"/>
-        <TextView
-            android:id="@+id/tv_room_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:textSize="@dimen/text_20"
-            android:text="907室"/>
-    </LinearLayout>
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="@dimen/text_20"
+                    android:text="房间名称:"/>
+                <TextView
+                    android:id="@+id/tv_room_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textSize="@dimen/text_20"
+                    android:text="907室"/>
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/choose"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:focusable="false"
+                />
+        </RelativeLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -66,44 +74,44 @@
             android:textSize="@dimen/text_20"
             android:text="大床房"/>
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:textSize="@dimen/text_20"
-            android:text="床位数"/>
-        <TextView
-            android:id="@+id/tv_bed_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:textSize="@dimen/text_20"
-            android:text="1张"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:textSize="@dimen/text_20"
-            android:text="面积"/>
-        <TextView
-            android:id="@+id/tv_room_area"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:textSize="@dimen/text_20"
-            android:text="40-50m²"/>
-    </RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:orientation="horizontal">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:textSize="@dimen/text_20"-->
+<!--            android:text="床位数"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_bed_num"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:textSize="@dimen/text_20"-->
+<!--            android:text="1张"/>-->
+<!--    </RelativeLayout>-->
+<!--    <RelativeLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:orientation="horizontal">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:textSize="@dimen/text_20"-->
+<!--            android:text="面积"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_room_area"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:textSize="@dimen/text_20"-->
+<!--            android:text="40-50m²"/>-->
+<!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -124,24 +132,24 @@
             android:text="无"/>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:textSize="@dimen/text_20"
-            android:text="服务项"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:textSize="@dimen/text_20"
-            android:text="无"/>
-    </RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:orientation="horizontal">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:textSize="@dimen/text_20"-->
+<!--            android:text="服务项"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:textSize="@dimen/text_20"-->
+<!--            android:text="无"/>-->
+<!--    </RelativeLayout>-->
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -155,12 +163,59 @@
                 android:textSize="@dimen/text_20"
                 android:text="房间状态"/>
             <TextView
+                android:id="@+id/tvRoomState"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:textSize="@dimen/text_20"
                 android:textColor="@color/red0"
                 android:text="已分配"/>
+        </RelativeLayout>
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="visible">-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btnParnterReceipt"-->
+<!--                android:layout_width="130dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:background="@drawable/selector_login_btn"-->
+<!--                android:enabled="true"-->
+<!--                android:text="房间分配"-->
+<!--                android:textSize="@dimen/text_20"-->
+<!--                />-->
+<!--        </RelativeLayout>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btnCompelte"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/corners_round"
+                android:enabled="true"
+                android:text="完成详情"
+                android:textSize="@dimen/text_20"
+                />
+            <Button
+                android:id="@+id/btnEvaluation"
+                android:layout_toLeftOf ="@id/btnCompelte"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/corners_round"
+                android:enabled="true"
+                android:text="评价详情"
+                android:textSize="@dimen/text_20"
+                />
         </RelativeLayout>
 
     </LinearLayout>

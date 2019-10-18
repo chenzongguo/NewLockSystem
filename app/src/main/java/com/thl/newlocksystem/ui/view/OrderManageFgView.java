@@ -9,4 +9,6 @@ public interface OrderManageFgView {
     TextView getTvNoArriveCorpNum();
     TextView getTvArriveCropNum();
     TextView getTvCompleteNum();
+    TextView getTvCleanCompleteNum();
+
 }

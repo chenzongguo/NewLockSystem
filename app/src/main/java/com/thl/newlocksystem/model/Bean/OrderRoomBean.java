@@ -59,29 +59,104 @@ public class OrderRoomBean {
         this.order_goods_data = order_goods_data;
     }
 
-    public List<OrderServicesBean> getOrder_services_data() {
-        return order_services_data;
+    public String getOrder_room_state() {
+        return order_room_state;
     }
 
-    public void setOrder_services_data(List<OrderServicesBean> order_services_data) {
-        this.order_services_data = order_services_data;
+    public void setOrder_room_state(String order_room_state) {
+        this.order_room_state = order_room_state;
     }
 
-    public List<RatingBean> getRating_data() {
-        return rating_data;
+    public String getRoom_type_name() {
+        return room_type_name;
     }
 
-    public void setRating_data(List<RatingBean> rating_data) {
-        this.rating_data = rating_data;
+    public void setRoom_type_name(String room_type_name) {
+        this.room_type_name = room_type_name;
+    }
+
+    public String getOrder_room_remark() {
+        return order_room_remark;
+    }
+
+    public void setOrder_room_remark(String order_room_remark) {
+        this.order_room_remark = order_room_remark;
+    }
+
+    public String getIs_overtime() {
+        return is_overtime;
+    }
+
+    public void setIs_overtime(String is_overtime) {
+        this.is_overtime = is_overtime;
+    }
+
+    public String getDispatch_time() {
+        return dispatch_time;
+    }
+
+    public void setDispatch_time(String dispatch_time) {
+        this.dispatch_time = dispatch_time;
+    }
+
+    public String getReceipt_time() {
+        return receipt_time;
+    }
+
+    public void setReceipt_time(String receipt_time) {
+        this.receipt_time = receipt_time;
+    }
+
+    public String getIs_clean() {
+        return is_clean;
+    }
+
+    public void setIs_clean(String is_clean) {
+        this.is_clean = is_clean;
+    }
+
+    public String getPic_id() {
+        return pic_id;
+    }
+
+    public void setPic_id(String pic_id) {
+        this.pic_id = pic_id;
+    }
+
+    public String getIs_rating() {
+        return is_rating;
+    }
+
+    public void setIs_rating(String is_rating) {
+        this.is_rating = is_rating;
+    }
+
+    public String getUser_rating_id() {
+        return user_rating_id;
+    }
+
+    public void setUser_rating_id(String user_rating_id) {
+        this.user_rating_id = user_rating_id;
     }
 
     private String order_room_id ="";
+    private String order_room_state = "";
     private String corp_room_id ="";
     private String corp_room_name ="";
     private String room_type_id ="";
+    private String room_type_name = "";
+    private String order_room_remark = "";
+    private String is_overtime = "";
+    private String dispatch_time = "";
+    private String receipt_time = "";
+    private String is_clean = "";
+    private String pic_id = "";
+    private String is_rating = "";
+    private String user_rating_id = "";
     private String bed_num ="";
     private String room_area_id ="";
     private List<OrderGoodsBean> order_goods_data;
-    private List<OrderServicesBean> order_services_data;
-    private List<RatingBean> rating_data ;
+
+//    private List<OrderServicesBean> order_services_data;
+//    private List<RatingBean> rating_data ;
 }

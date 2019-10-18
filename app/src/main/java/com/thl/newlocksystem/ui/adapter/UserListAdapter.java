@@ -11,19 +11,25 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.thl.newlocksystem.R;
+import com.thl.newlocksystem.model.Bean.UserBean;
 
-public class UserDialogAdapter extends BaseAdapter implements CompoundButton.OnCheckedChangeListener {
+import java.util.List;
+
+public class UserListAdapter extends BaseAdapter implements CompoundButton.OnCheckedChangeListener {
     private LayoutInflater inflater;
+    private List<UserBean> userBeanList;
+    private int checkPosition = -1;
+    private OnCheckedChangeClickListener dbListener;
 
-    public UserDialogAdapter(Context context) {
+    public UserListAdapter(Context context, List<UserBean> userBeanList) {
         // TODO Auto-generated constructor stub
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        this.OrderBeanlist = orderBeanlist;
+        this.userBeanList = userBeanList;
     }
 
     @Override
     public int getCount() {
-        return 7;
+        return userBeanList.size();
     }
 
     @Override
@@ -38,24 +44,42 @@ public class UserDialogAdapter extends BaseAdapter implements CompoundButton.OnC
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        UserDialogAdapter.ViewHolder holder;
+        UserListAdapter.ViewHolder holder;
         if(convertView == null){
-            holder = new UserDialogAdapter.ViewHolder();
+            holder = new UserListAdapter.ViewHolder();
             convertView = inflater.inflate(R.layout.item_user, null);
             holder.tvUserName = (TextView) convertView.findViewById(R.id.tvUserName);
             holder.checkbox = (CheckBox)convertView.findViewById(R.id.choose);
             convertView.setTag(holder);
         }else{
-            holder = (UserDialogAdapter.ViewHolder) convertView.getTag();
+            holder = (UserListAdapter.ViewHolder) convertView.getTag();
         }
-        holder.checkbox.setOnCheckedChangeListener(this);
+//        holder.checkbox.setOnCheckedChangeListener(this);
+        holder.checkbox.setTag(position);
+        if(position==checkPosition){
+            holder.checkbox.setChecked(true);
+        }else{
+            holder.checkbox.setChecked(false);
+        }
+        holder.tvUserName.setText(userBeanList.get(position).getName());
         return convertView;
     }
 
+    public void setCheckPosition(int position){
+        checkPosition = position;
+    }
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        int p = (Integer)buttonView.getTag();
-//        dbListener.onCheckBoxClick(p, isChecked);
+        checkPosition = (Integer)buttonView.getTag();
+        dbListener.onCheckBoxClick(checkPosition, isChecked);
+    }
+
+    public void setCheckBoxOnClickListener(OnCheckedChangeClickListener listener) {
+        dbListener = listener;
+    }
+
+    public interface OnCheckedChangeClickListener {
+        void onCheckBoxClick(int index, boolean isChecked);
     }
 
     class ViewHolder{

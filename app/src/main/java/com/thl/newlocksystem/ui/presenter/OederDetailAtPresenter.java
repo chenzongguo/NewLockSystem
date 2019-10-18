@@ -2,6 +2,7 @@ package com.thl.newlocksystem.ui.presenter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -17,11 +18,13 @@ import com.thl.newlocksystem.model.request.UpdateOrderRoomStateRequest;
 import com.thl.newlocksystem.model.response.GetOrderResponse;
 import com.thl.newlocksystem.model.response.GetUserListResponse;
 import com.thl.newlocksystem.ui.activity.OrderDetailActivity;
+import com.thl.newlocksystem.ui.activity.UserListActivity;
 import com.thl.newlocksystem.ui.adapter.OrderRoomAdapter;
 import com.thl.newlocksystem.ui.base.BaseActivity;
 import com.thl.newlocksystem.ui.base.BasePresenter;
 import com.thl.newlocksystem.ui.dialog.UserDialog;
 import com.thl.newlocksystem.ui.view.IOrderDetailAtView;
+import com.thl.newlocksystem.util.SystemUtil;
 
 import java.util.List;
 
@@ -55,7 +58,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
             OrderAllocation = true;
         }
         GetOrderRequest getOrderRequest = new GetOrderRequest();
-        getOrderRequest.setType("1");
+        getOrderRequest.setType("2");
         getOrderRequest.setOrder_id(order_id);
         ApiRetrofit.getInstance().getOrder(getOrderRequest)
                 .subscribeOn(Schedulers.io())
@@ -80,6 +83,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
             orderRoomAdapter = new OrderRoomAdapter(mContext,orderRoomBeanList);
 //        orderRoomAdapter.setOnClick(this);
         getView().getLvRoomInfo().setAdapter(orderRoomAdapter);
+        SystemUtil.setListViewHeightBasedOnChildren(getView().getLvRoomInfo());
         getView().getLvRoomInfo().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -91,7 +95,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(mContext,"listview点击事件",Toast.LENGTH_SHORT).show();
-                mContext.jumpToActivityAndClearTask(OrderDetailActivity.class);
+//                mContext.jumpToActivityAndClearTask(OrderDetailActivity.class);
             }
         });
     }
@@ -99,6 +103,12 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
     private void initView(GetOrderResponse getOrderResponse){
         getView().getTvCorpName().setText(getOrderResponse.getData().getCorp_name());
         getView().getTvAddress().setText(getOrderResponse.getData().getCorp_addr());
+        getView().getTvOrderId().setText(getOrderResponse.getData().getOrder_id());
+        getView().getTvCreateTime().setText(getOrderResponse.getData().getCreate_time());
+        getView().getTvTime().setText(getOrderResponse.getData().getDoor_time());
+        getView().getTvContacts().setText(getOrderResponse.getData().getContacts());
+        getView().getTvContactPhone().setText(getOrderResponse.getData().getContact_phone());
+        getView().getTvPaymentPrice().setText(getOrderResponse.getData().getPayment_price());
     }
 
     public void ParnterReceipt(){
@@ -127,9 +137,12 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
                         }
                     });
         }else{
+            Intent intent = new Intent(mContext, UserListActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            mContext.startActivityForResult(intent, 100);
+//            mContext.jumpToActivityAndClearTop(UserListActivity.class);
 
-
-            getUserList();
+//            getUserList();
 //            dialogChoice();
 //            UserDialog userDialog = new UserDialog(mContext, View.inflate(mContext, R.layout.dialog_user, null),R.style.MyDialog);
 //            userDialog.setTitle("请选择需要指派的保洁员");
@@ -138,12 +151,13 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
 
     }
 
-    private void OrderAllocation(){
+    public void OrderAllocation(String userId){
+        for (int i =0;i<orderRoomBeanList.size();i++){
             UpdateOrderRoomStateRequest updateOrderRoomStateRequest = new UpdateOrderRoomStateRequest();
             updateOrderRoomStateRequest.setType("1");
-            updateOrderRoomStateRequest.setUser_id(getUserListResponse.getData().get(i).getUser_id());
+            updateOrderRoomStateRequest.setUser_id(userId);
             updateOrderRoomStateRequest.setOrder_id(getOrderResponse.getData().getOrder_id());
-            updateOrderRoomStateRequest.setOrder_room_id(orderRoomBeanList.get(0).getOrder_room_id());
+            updateOrderRoomStateRequest.setOrder_room_id(orderRoomBeanList.get(i).getOrder_room_id());
             ApiRetrofit.getInstance().updateOrderRoomState(updateOrderRoomStateRequest)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -157,12 +171,13 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
 //                        initView(getOrderResponse);
                             getView().getBtnParnterReceipt().setText("订单待确认");
                             getView().getBtnParnterReceipt().setEnabled(false);
-                            Toast.makeText(mContext, "派单成功", Toast.LENGTH_SHORT).show();
                         }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                             Toast.makeText(mContext, getBaseResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
+        }
+
     }
 
     private void getUserList(){
@@ -214,7 +229,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                OrderAllocation();
+//                OrderAllocation();
                 dialog.dismiss();
 //                Toast.makeText(MainActivity.this, "确定", Toast.LENGTH_SHORT)
 //                        .show();

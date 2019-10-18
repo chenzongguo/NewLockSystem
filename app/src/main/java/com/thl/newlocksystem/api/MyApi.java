@@ -2,6 +2,7 @@ package com.thl.newlocksystem.api;
 
 import com.thl.newlocksystem.model.response.BaseResponse;
 import com.thl.newlocksystem.model.response.CheckUpdateResponse;
+import com.thl.newlocksystem.model.response.GetCleanPicResponse;
 import com.thl.newlocksystem.model.response.GetOrderListResponse;
 import com.thl.newlocksystem.model.response.GetOrderResponse;
 import com.thl.newlocksystem.model.response.GetOrderStateNumResponse;
@@ -21,8 +22,8 @@ import rx.Observable;
 public interface MyApi {
 
 //    public static final String BASE_URL = "http://218.94.111.86:8091/";
-//    public static final String BASE_URL = "http://192.168.20.190:8080/";
-    public static final String BASE_URL = "http://218.94.111.86:8091/";
+    public static final String BASE_URL = "http://192.168.20.190:8080/";
+//    public static final String BASE_URL = "http://218.94.111.86:8091/";
 
 
     //检查手机是否被注册
@@ -83,5 +84,9 @@ public interface MyApi {
     //商户接单
     @POST("hsp/order/updateOrderRoomState.do")
     Observable<BaseResponse> updateOrderRoomState(@Body RequestBody jsonString);
+
+    //商户接单
+    @POST("hsp/order/getCleanPic.do")
+    Observable<GetCleanPicResponse> getCleanPic(@Body RequestBody jsonString);
 
 }

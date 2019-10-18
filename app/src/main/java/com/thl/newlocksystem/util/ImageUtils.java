@@ -14,6 +14,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
+import android.util.Base64;
 import android.view.Display;
 import android.view.WindowManager;
 
@@ -491,5 +492,15 @@ public class ImageUtils {
         }
 
         return inSampleSize;
+    }
+
+    /**
+     * base64转为bitmap
+     * @param base64Data
+     * @return
+     */
+    public static Bitmap base64ToBitmap(String base64Data) {
+        byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
 }

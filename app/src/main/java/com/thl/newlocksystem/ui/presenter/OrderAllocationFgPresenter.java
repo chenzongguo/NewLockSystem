@@ -36,7 +36,7 @@ public class OrderAllocationFgPresenter extends BasePresenter<OrderAllocationFgV
     }
     private void  loadData(){
         GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
-        getOrderListRequest.setType("1");
+        getOrderListRequest.setType("2");
         getOrderListRequest.setSelect_number("10");
         getOrderListRequest.setStart_number("0");
         getOrderListRequest.setOrder_state("3");

@@ -1,5 +1,6 @@
 package com.thl.newlocksystem.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,26 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
 
     @BindView(R2.id.tvAddress)
     TextView tvAddress;
+
+
+    @BindView(R2.id.tvOrderId)
+    TextView tvOrderId;
+
+    @BindView(R2.id.tvCreateTime)
+    TextView tvCreateTime;
+
+    @BindView(R2.id.tvTime)
+    TextView tvTime;
+
+    @BindView(R2.id.tvContacts)
+    TextView tvContacts;
+
+    @BindView(R2.id.tvContactPhone)
+    TextView tvContactPhone;
+
+    @BindView(R2.id.tvPaymentPrice)
+    TextView tvPaymentPrice;
+
 //
     @BindView(R2.id.btnParnterReceipt)
     Button btnParnterReceipt;
@@ -51,6 +72,13 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         StatusBarUtil.setColor(this, UIUtils.getColor(R.color.colorPrimary), 10);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String user_id = data.getStringExtra("user_id");
+        mPresenter.OrderAllocation(user_id);
     }
 
     @Override
@@ -96,6 +124,36 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     @Override
     public TextView getTvCorpName() {
         return tvCorpName;
+    }
+
+    @Override
+    public TextView getTvOrderId() {
+        return tvOrderId;
+    }
+
+    @Override
+    public TextView getTvCreateTime() {
+        return tvCreateTime;
+    }
+
+    @Override
+    public TextView getTvTime() {
+        return tvTime;
+    }
+
+    @Override
+    public TextView getTvContacts() {
+        return tvContacts;
+    }
+
+    @Override
+    public TextView getTvContactPhone() {
+        return tvContactPhone;
+    }
+
+    @Override
+    public TextView getTvPaymentPrice() {
+        return tvPaymentPrice;
     }
 
     @Override

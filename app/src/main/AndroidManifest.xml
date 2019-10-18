@@ -65,6 +65,14 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:name=".ui.activity.CompelteActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.UserListActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name=".ui.activity.LockedActivity"
             android:screenOrientation="portrait">
         </activity>

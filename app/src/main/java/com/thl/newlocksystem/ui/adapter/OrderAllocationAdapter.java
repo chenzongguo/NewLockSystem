@@ -55,28 +55,32 @@ public class OrderAllocationAdapter extends BaseAdapter {
             holder.tvAddress = (TextView) convertView.findViewById(R.id.tvAddress);
             holder.tvPaymentPrice = (TextView) convertView.findViewById(R.id.tvPaymentPrice);
             holder.tvCorpName = (TextView) convertView.findViewById(R.id.tvCorpName);
-            holder.btn_receiveOrder = convertView.findViewById(R.id.btn_receive_order);
+            holder.tvContacts = (TextView) convertView.findViewById(R.id.tvContacts);
+            holder.tvContactPhone = (TextView) convertView.findViewById(R.id.tvContactPhone);
+//            holder.btn_receiveOrder = convertView.findViewById(R.id.btn_receive_order);
             convertView.setTag(holder);
         }else{
             holder = (OrderAllocationAdapter.ViewHolder) convertView.getTag();
         }
-        holder.btn_receiveOrder.setOnClickListener(new android.view.View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                onClick.OrderReceive();
-            }
-        });
+//        holder.btn_receiveOrder.setOnClickListener(new android.view.View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                onClick.OrderReceive();
+//            }
+//        });
         holder.tvTime.setText(OrderBeanlist.get(position).getDoor_time());
         holder.tvAddress.setText(OrderBeanlist.get(position).getCorp_addr());
-        holder.tvPaymentPrice.setText(OrderBeanlist.get(position).getPayment_price());
+        holder.tvPaymentPrice.setText("¥"+OrderBeanlist.get(position).getPayment_price());
         holder.tvCorpName.setText(OrderBeanlist.get(position).getCorp_name());
+        holder.tvContacts.setText(OrderBeanlist.get(position).getContacts());
+        holder.tvContactPhone.setText(OrderBeanlist.get(position).getContact_phone());
         return convertView;
     }
     class ViewHolder{
-        TextView tvTime,tvAddress,tvPaymentPrice,tvCorpName;
-        Button btn_receiveOrder;
+        TextView tvTime,tvAddress,tvPaymentPrice,tvCorpName,tvContacts,tvContactPhone;
+//        Button btn_receiveOrder;
     }
 
     public interface OnListenerClick{

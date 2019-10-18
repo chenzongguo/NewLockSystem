@@ -11,12 +11,12 @@ import android.widget.Toast;
 import com.thl.newlocksystem.R;
 import com.thl.newlocksystem.ui.activity.OrderDetailActivity;
 import com.thl.newlocksystem.ui.adapter.OrderReceiveAdapter;
-import com.thl.newlocksystem.ui.adapter.UserDialogAdapter;
+import com.thl.newlocksystem.ui.adapter.UserListAdapter;
 import com.thl.newlocksystem.widget.CustomDialog;
 
 public class UserDialog extends CustomDialog {
     private ListView lvUser;
-    private UserDialogAdapter userDialogAdapter;
+    private UserListAdapter userListAdapter;
     private Context mContext;
 
     public UserDialog(Context context, View layout, int style) {
@@ -37,10 +37,10 @@ public class UserDialog extends CustomDialog {
     }
     private void setAdapter(){
 
-        if(userDialogAdapter == null)
-            userDialogAdapter = new UserDialogAdapter(mContext);
-//        userDialogAdapter.setOnClick(this);
-        lvUser.setAdapter(userDialogAdapter);
+//        if(userListAdapter == null)
+//            userListAdapter = new UserListAdapter(mContext);
+////        userDialogAdapter.setOnClick(this);
+//        lvUser.setAdapter(userListAdapter);
 
     }
 }

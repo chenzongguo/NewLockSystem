@@ -7,6 +7,7 @@ import com.thl.newlocksystem.model.request.BaseRequest;
 import com.thl.newlocksystem.model.request.ChangeStateRequest;
 import com.thl.newlocksystem.model.request.CheckCaptchaRequest;
 import com.thl.newlocksystem.model.request.CheckUpdateRequest;
+import com.thl.newlocksystem.model.request.GetCleanPicRequest;
 import com.thl.newlocksystem.model.request.GetOrderListRequest;
 import com.thl.newlocksystem.model.request.GetOrderRequest;
 import com.thl.newlocksystem.model.request.GetOrderStateNumRequest;
@@ -20,6 +21,7 @@ import com.thl.newlocksystem.model.request.UserRegisterRequest;
 import com.thl.newlocksystem.model.request.UserTokenRequest;
 import com.thl.newlocksystem.model.response.BaseResponse;
 import com.thl.newlocksystem.model.response.CheckUpdateResponse;
+import com.thl.newlocksystem.model.response.GetCleanPicResponse;
 import com.thl.newlocksystem.model.response.GetOrderListResponse;
 import com.thl.newlocksystem.model.response.GetOrderResponse;
 import com.thl.newlocksystem.model.response.GetOrderStateNumResponse;
@@ -157,5 +159,10 @@ public class ApiRetrofit extends BaseApiRetrofit {
     //商户接单
     public Observable<BaseResponse> updateOrderRoomState(UpdateOrderRoomStateRequest updateOrderRoomStateRequest) {
         return mApi.updateOrderRoomState(getUserTokenRequestBody(updateOrderRoomStateRequest));
+    }
+
+    //商户接单
+    public Observable<GetCleanPicResponse> getCleanPic(GetCleanPicRequest getCleanPicRequest) {
+        return mApi.getCleanPic(getUserTokenRequestBody(getCleanPicRequest));
     }
 }

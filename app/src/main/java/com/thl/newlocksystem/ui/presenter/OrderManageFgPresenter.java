@@ -59,6 +59,9 @@ public class OrderManageFgPresenter extends BasePresenter<OrderManageFgView> {
                                     case "7":
                                         getView().getTvCompleteNum().setText(getOrderStateNumResponse.getData().get(i).getNum());
                                         break;
+                                    case"9":
+                                        getView().getTvCleanCompleteNum().setText(getOrderStateNumResponse.getData().get(i).getNum());
+                                        break;
                                 }
                             }
                         }

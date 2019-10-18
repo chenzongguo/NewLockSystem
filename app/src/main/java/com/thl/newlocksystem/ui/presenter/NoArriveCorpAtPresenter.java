@@ -33,7 +33,8 @@ public class NoArriveCorpAtPresenter extends BasePresenter<INoArriveCorpAtView> 
     private void  loadData(){
         String order_state = mContext.getIntent().getStringExtra("order_state");
         GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
-        getOrderListRequest.setType("1");
+        getOrderListRequest.setType("2");
+        getOrderListRequest.setPartner_id("1");
         getOrderListRequest.setSelect_number("10");
         getOrderListRequest.setStart_number("0");
         getOrderListRequest.setOrder_state(order_state);

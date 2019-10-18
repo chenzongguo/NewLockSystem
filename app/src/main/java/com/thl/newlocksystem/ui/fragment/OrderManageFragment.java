@@ -25,8 +25,11 @@ public class OrderManageFragment extends BaseFragment<OrderManageFgView, OrderMa
     @BindView(R2.id.llyArriveCrop)
     LinearLayout llyArriveCrop;
 
-    @BindView(R2.id.llyComplete)
-    LinearLayout llyComplete;
+    @BindView(R2.id.llyOrderComplete)
+    LinearLayout llyOrderComplete;
+
+    @BindView(R2.id.llyCleanComplete)
+    LinearLayout llyCleanComplete;
 
     @BindView(R2.id.tvOrderNoConfirmNum)
     TextView tvOrderNoConfirmNum;
@@ -37,8 +40,11 @@ public class OrderManageFragment extends BaseFragment<OrderManageFgView, OrderMa
     @BindView(R2.id.tvArriveCropNum)
     TextView tvArriveCropNum;
 
-    @BindView(R2.id.tvCompleteNum)
-    TextView tvCompleteNum;
+    @BindView(R2.id.tvOrderCompleteNum)
+    TextView tvOrderCompleteNum;
+
+    @BindView(R2.id.tvCleanCompleteNum)
+    TextView tvCleanCompleteNum;
 
     @Override
     public void onStart() {
@@ -79,7 +85,12 @@ public class OrderManageFragment extends BaseFragment<OrderManageFgView, OrderMa
 
     @Override
     public TextView getTvCompleteNum() {
-        return tvCompleteNum;
+        return tvOrderCompleteNum;
+    }
+
+    @Override
+    public TextView getTvCleanCompleteNum() {
+        return tvCleanCompleteNum;
     }
 
     @Override
@@ -87,6 +98,7 @@ public class OrderManageFragment extends BaseFragment<OrderManageFgView, OrderMa
         llyOrderNoConfirm.setOnClickListener(v -> mPresenter.toActivity());
         llyNoArriveCorp.setOnClickListener(v -> mPresenter.toActivity2("5"));
         llyArriveCrop.setOnClickListener(v -> mPresenter.toActivity2("6"));
-        llyComplete.setOnClickListener(v -> mPresenter.toActivity2("7"));
+        llyOrderComplete.setOnClickListener(v -> mPresenter.toActivity2("7"));
+        llyCleanComplete.setOnClickListener(v -> mPresenter.toActivity2("9"));
     }
 }
