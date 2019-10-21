@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.thl.newlocksystem">
+    package="cn.njthl.HotelClean">
 
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,7 +19,7 @@
         android:name=".app.MyApp"
         android:allowBackup="true"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -66,6 +66,10 @@
         </activity>
         <activity
             android:name=".ui.activity.CompelteActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.EvaluationInfoActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity

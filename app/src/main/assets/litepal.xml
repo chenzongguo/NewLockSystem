@@ -5,9 +5,9 @@
     <version value="1"></version>
 
     <list>
-        <mapping class="com.thl.newlocksystem.db.model.Customer"></mapping>
-        <mapping class="com.thl.newlocksystem.db.model.Photo"></mapping>
-        <mapping class="com.thl.newlocksystem.db.model.SysUser"></mapping>
-        <mapping class="com.thl.newlocksystem.db.model.UnlockBusiness"></mapping>
+        <mapping class="cn.njthl.HotelClean.db.model.Customer"></mapping>
+        <mapping class="cn.njthl.HotelClean.db.model.Photo"></mapping>
+        <mapping class="cn.njthl.HotelClean.db.model.SysUser"></mapping>
+        <mapping class="cn.njthl.HotelClean.db.model.UnlockBusiness"></mapping>
     </list>
 </litepal>
