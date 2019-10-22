@@ -1,14 +1,14 @@
-package com.thl.newlocksystem.ui.fragment;
+package cn.njthl.HotelClean.ui.fragment;
 
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.thl.newlocksystem.R;
-import com.thl.newlocksystem.R2;
-import com.thl.newlocksystem.ui.activity.MainActivity;
-import com.thl.newlocksystem.ui.base.BaseFragment;
-import com.thl.newlocksystem.ui.presenter.HomePageFgPresenter;
-import com.thl.newlocksystem.ui.view.HomePageFgView;
+import cn.njthl.HotelClean.R;
+import cn.njthl.HotelClean.R2;
+import cn.njthl.HotelClean.ui.activity.MainActivity;
+import cn.njthl.HotelClean.ui.base.BaseFragment;
+import cn.njthl.HotelClean.ui.presenter.HomePageFgPresenter;
+import cn.njthl.HotelClean.ui.view.HomePageFgView;
 
 import butterknife.BindView;
 

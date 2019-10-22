@@ -1,9 +1,9 @@
-package com.thl.newlocksystem.ui.fragment;
+package cn.njthl.HotelClean.ui.fragment;
 
-import com.thl.newlocksystem.R;
-import com.thl.newlocksystem.ui.base.BaseFragment;
-import com.thl.newlocksystem.ui.presenter.MeFgPresenter;
-import com.thl.newlocksystem.ui.view.MeFgView;
+import cn.njthl.HotelClean.R;
+import cn.njthl.HotelClean.ui.base.BaseFragment;
+import cn.njthl.HotelClean.ui.presenter.MeFgPresenter;
+import cn.njthl.HotelClean.ui.view.MeFgView;
 
 public class MeFragment extends BaseFragment<MeFgView, MeFgPresenter> implements MeFgView {
 

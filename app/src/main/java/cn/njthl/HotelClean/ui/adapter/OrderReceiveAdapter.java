@@ -1,15 +1,14 @@
-package com.thl.newlocksystem.ui.adapter;
+package cn.njthl.HotelClean.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.thl.newlocksystem.R;
-import com.thl.newlocksystem.model.Bean.OrderBean;
+import cn.njthl.HotelClean.R;
+import cn.njthl.HotelClean.model.Bean.OrderBean;
 
 import java.util.List;
 
@@ -26,6 +25,9 @@ public class OrderReceiveAdapter extends BaseAdapter {
     public OrderReceiveAdapter(Context context, List<OrderBean> orderBeanlist) {
         // TODO Auto-generated constructor stub
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.OrderBeanlist = orderBeanlist;
+    }
+    public void setOrderList(List<OrderBean> orderBeanlist){
         this.OrderBeanlist = orderBeanlist;
     }
     @Override

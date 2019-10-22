@@ -1,4 +1,4 @@
-package com.thl.newlocksystem.model.Bean;
+package cn.njthl.HotelClean.model.Bean;
 
 public class RatingBean {
     private String user_rating_id;//

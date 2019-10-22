@@ -1,7 +1,7 @@
-package com.thl.newlocksystem.model.request;
+package cn.njthl.HotelClean.model.request;
 
-import com.thl.newlocksystem.util.SPUtils;
-import com.thl.newlocksystem.util.TimeUtils;
+import cn.njthl.HotelClean.util.SPUtils;
+import cn.njthl.HotelClean.util.TimeUtils;
 
 public class GetTokenRequest {
     private String appid;

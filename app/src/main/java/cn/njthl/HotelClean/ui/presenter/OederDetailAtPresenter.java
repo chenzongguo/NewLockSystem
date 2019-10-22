@@ -50,17 +50,36 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
         order_id = mContext.getIntent().getStringExtra("order_id");
         order_state = mContext.getIntent().getStringExtra("order_state");
         if(order_state.equals("2")){
+            getView().getTvOrderState().setText("待接单");
             getView().getBtnParnterReceipt().setText("确认接单");
         }
         if(order_state.equals("3")){
+            getView().getTvOrderState().setText("待派单");
             getView().getBtnParnterReceipt().setText("去派单");
             OrderAllocation = true;
         }
         if(order_state.equals("4")){
+            getView().getTvOrderState().setText("已派单");
             getView().getBtnParnterReceipt().setText("重新派单");
             OrderAllocation = true;
-        }else{
+        }else if(order_state.equals("5")){
+            getView().getTvOrderState().setText("保洁员");
             getView().getBtnParnterReceipt().setText("订单待完成");
+            getView().getBtnParnterReceipt().setEnabled(false);
+        }
+        else if(order_state.equals("6")){
+            getView().getTvOrderState().setText("保洁员已上门");
+            getView().getBtnParnterReceipt().setText("订单待完成");
+            getView().getBtnParnterReceipt().setEnabled(false);
+        }
+        else if(order_state.equals("9")){
+            getView().getTvOrderState().setText("房间已打扫");
+            getView().getBtnParnterReceipt().setText("订单待完成");
+            getView().getBtnParnterReceipt().setEnabled(false);
+        }
+        else if(order_state.equals("7")){
+            getView().getTvOrderState().setText("订单完成");
+            getView().getBtnParnterReceipt().setText("订单已完成");
             getView().getBtnParnterReceipt().setEnabled(false);
         }
 

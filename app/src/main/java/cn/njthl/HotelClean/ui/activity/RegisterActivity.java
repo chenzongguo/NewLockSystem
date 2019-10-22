@@ -1,8 +1,12 @@
 package cn.njthl.HotelClean.ui.activity;
 
+import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.jaeger.library.StatusBarUtil;
+
+import androidx.annotation.Nullable;
 import cn.njthl.HotelClean.R;
 import cn.njthl.HotelClean.R2;
 import cn.njthl.HotelClean.ui.base.BaseActivity;
@@ -10,6 +14,7 @@ import cn.njthl.HotelClean.ui.presenter.RegisterAtPresenter;
 import cn.njthl.HotelClean.ui.view.IRegisterAtView;
 
 import butterknife.BindView;
+import cn.njthl.HotelClean.util.UIUtils;
 
 public class RegisterActivity extends BaseActivity<IRegisterAtView, RegisterAtPresenter> implements IRegisterAtView {
     @BindView(R2.id.etPhone)
@@ -33,6 +38,12 @@ public class RegisterActivity extends BaseActivity<IRegisterAtView, RegisterAtPr
     @BindView(R2.id.btnUserRegister)
     Button mBtnUserRegister;
 
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.colorPrimary), 10);
+    }
 
     @Override
     public void initListener() {

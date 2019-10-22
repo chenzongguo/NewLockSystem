@@ -65,6 +65,7 @@ public class OrderAllocationFgPresenter extends BasePresenter<OrderAllocationFgV
         if(orderAllocationAdapter == null)
             orderAllocationAdapter = new OrderAllocationAdapter(mContext,orderBeanList);
         orderAllocationAdapter.setOnClick(this);
+        orderAllocationAdapter.setOrderList(orderBeanList);
         getView().getLvOrderAllocation().setAdapter(orderAllocationAdapter);
         getView().getLvOrderAllocation().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -83,6 +84,8 @@ public class OrderAllocationFgPresenter extends BasePresenter<OrderAllocationFgV
                 mContext.jumpToActivity(intent);
             }
         });
+        if (orderAllocationAdapter != null)
+            orderAllocationAdapter.notifyDataSetChanged();
     }
 
     @Override

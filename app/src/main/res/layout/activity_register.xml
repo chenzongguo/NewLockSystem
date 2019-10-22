@@ -63,6 +63,7 @@
 
 
         <LinearLayout
+            android:id="@+id/llyPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -70,8 +71,6 @@
             android:layout_marginTop="10dp"
             android:paddingLeft="30px"
             android:paddingRight="30px">
-
-
 
 
             <EditText
@@ -98,6 +97,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llyVerifyCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -140,6 +140,7 @@
 
 
         <LinearLayout
+            android:id="@+id/llypwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"

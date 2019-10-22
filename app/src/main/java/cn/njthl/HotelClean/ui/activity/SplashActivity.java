@@ -11,6 +11,7 @@ import com.jaeger.library.StatusBarUtil;
 import cn.njthl.HotelClean.R;
 import cn.njthl.HotelClean.R2;
 import cn.njthl.HotelClean.api.ApiRetrofit;
+import cn.njthl.HotelClean.app.AppConst;
 import cn.njthl.HotelClean.ui.base.BaseActivity;
 import cn.njthl.HotelClean.ui.base.BasePresenter;
 

@@ -34,7 +34,7 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
     }
     private void  loadData(){
         GetOrderListRequest getOrderListRequest = new GetOrderListRequest();
-        getOrderListRequest.setType("1");
+        getOrderListRequest.setType("2");
         getOrderListRequest.setSelect_number("10");
         getOrderListRequest.setStart_number("0");
         getOrderListRequest.setOrder_state("2");
@@ -64,6 +64,7 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
 
         if(orderReceiveAdapter == null)
         orderReceiveAdapter = new OrderReceiveAdapter(mContext,orderBeanList);
+        orderReceiveAdapter.setOrderList(orderBeanList);
         orderReceiveAdapter.setOnClick(this);
         getView().getLvOrderReceive().setAdapter(orderReceiveAdapter);
         getView().getLvOrderReceive().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -84,6 +85,8 @@ public class HomePageFgPresenter extends BasePresenter<HomePageFgView> implement
 //                mContext.jumpToActivityAndClearTop(OrderDetailActivity.class);
             }
         });
+        if (orderReceiveAdapter != null)
+            orderReceiveAdapter.notifyDataSetChanged();
     }
 
     @Override

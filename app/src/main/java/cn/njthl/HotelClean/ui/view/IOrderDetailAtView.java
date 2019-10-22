@@ -14,5 +14,6 @@ public interface IOrderDetailAtView {
     TextView getTvContacts();
     TextView getTvContactPhone();
     TextView getTvPaymentPrice();
+    TextView getTvOrderState();
     Button getBtnParnterReceipt();
 }

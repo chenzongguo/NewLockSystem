@@ -1,4 +1,4 @@
-package com.thl.newlocksystem.model.response;
+package cn.njthl.HotelClean.model.response;
 
 public class BaseResponse {
     private String code;

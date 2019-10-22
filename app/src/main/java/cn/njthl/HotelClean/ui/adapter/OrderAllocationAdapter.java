@@ -26,6 +26,9 @@ public class OrderAllocationAdapter extends BaseAdapter {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.OrderBeanlist = orderBeanlist;
     }
+    public void setOrderList(List<OrderBean> orderBeanlist){
+        this.OrderBeanlist = orderBeanlist;
+    }
     @Override
     public int getCount() {
         if(OrderBeanlist!=null)

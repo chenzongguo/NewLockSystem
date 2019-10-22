@@ -1,4 +1,4 @@
-package com.thl.newlocksystem.model.request;
+package cn.njthl.HotelClean.model.request;
 
 public class GetOrderStateNumRequest {
     private String type;//查询标识(1全部2商户3微信用户)

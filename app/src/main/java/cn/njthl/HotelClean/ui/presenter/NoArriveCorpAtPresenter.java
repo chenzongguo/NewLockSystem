@@ -1,18 +1,18 @@
-package com.thl.newlocksystem.ui.presenter;
+package cn.njthl.HotelClean.ui.presenter;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
-import com.thl.newlocksystem.api.ApiRetrofit;
-import com.thl.newlocksystem.model.Bean.OrderBean;
-import com.thl.newlocksystem.model.request.GetOrderListRequest;
-import com.thl.newlocksystem.ui.activity.OrderDetailActivity;
-import com.thl.newlocksystem.ui.adapter.OrderReceiveAdapter;
-import com.thl.newlocksystem.ui.base.BaseActivity;
-import com.thl.newlocksystem.ui.base.BasePresenter;
-import com.thl.newlocksystem.ui.view.INoArriveCorpAtView;
+import cn.njthl.HotelClean.api.ApiRetrofit;
+import cn.njthl.HotelClean.model.Bean.OrderBean;
+import cn.njthl.HotelClean.model.request.GetOrderListRequest;
+import cn.njthl.HotelClean.ui.activity.OrderDetailActivity;
+import cn.njthl.HotelClean.ui.adapter.OrderReceiveAdapter;
+import cn.njthl.HotelClean.ui.base.BaseActivity;
+import cn.njthl.HotelClean.ui.base.BasePresenter;
+import cn.njthl.HotelClean.ui.view.INoArriveCorpAtView;
 
 import java.util.List;
 

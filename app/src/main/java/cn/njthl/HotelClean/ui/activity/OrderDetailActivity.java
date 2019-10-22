@@ -26,6 +26,10 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     TextView tvAddress;
 
 
+
+    @BindView(R2.id.tvOrderState)
+    TextView tvOrderState;
+
     @BindView(R2.id.tvOrderId)
     TextView tvOrderId;
 
@@ -153,6 +157,11 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     @Override
     public TextView getTvPaymentPrice() {
         return tvPaymentPrice;
+    }
+
+    @Override
+    public TextView getTvOrderState() {
+        return tvOrderState;
     }
 
     @Override

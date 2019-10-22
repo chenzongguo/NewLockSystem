@@ -1,6 +1,6 @@
-package com.thl.newlocksystem.model.request;
+package cn.njthl.HotelClean.model.request;
 
-import com.thl.newlocksystem.app.AppConst;
+import cn.njthl.HotelClean.app.AppConst;
 
 public class UserTokenRequest {
     private String token;
