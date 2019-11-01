@@ -5,11 +5,20 @@ public class GetOrderListRequest {
     private String partner_id;//商户id
     private String wx_user_id;//微信用户id
     private String order_state;//订单状态
+    private String is_dispatch;
     private String create_start_time;//下单开始时间
     private String create_stop_time;//下单结束时间
 //    private String current_page;//
     private String start_number;//开始位置
     private String select_number;//查询条数
+
+    public String getIs_dispatch() {
+        return is_dispatch;
+    }
+
+    public void setIs_dispatch(String is_dispatch) {
+        this.is_dispatch = is_dispatch;
+    }
 
     public String getType() {
         return type;

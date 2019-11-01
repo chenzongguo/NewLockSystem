@@ -24,6 +24,7 @@ import cn.njthl.HotelClean.R;
 import cn.njthl.HotelClean.R2;
 import cn.njthl.HotelClean.app.MyApp;
 import cn.njthl.HotelClean.ui.activity.WebViewActivity;
+import cn.njthl.HotelClean.util.ActivityCollectorUtils;
 import cn.njthl.HotelClean.widget.CustomDialog;
 
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
         super.onCreate(savedInstanceState);
         MyApp.activities.add(this);
         init();
-
+        ActivityCollectorUtils.addActivity(this);
         //判断是否使用MVP模式
         mPresenter = createPresenter();
         if (mPresenter != null) {
@@ -130,6 +131,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        ActivityCollectorUtils.removeActivity(this);
         if (mPresenter != null) {
             mPresenter.detachView();
         }

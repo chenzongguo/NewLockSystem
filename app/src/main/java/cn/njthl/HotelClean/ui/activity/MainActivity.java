@@ -1,12 +1,16 @@
 package cn.njthl.HotelClean.ui.activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.jaeger.library.StatusBarUtil;
+
+import androidx.annotation.Nullable;
 import cn.njthl.HotelClean.R;
 import cn.njthl.HotelClean.R2;
 import cn.njthl.HotelClean.ui.adapter.CommonFragmentPagerAdapter;
@@ -15,6 +19,7 @@ import cn.njthl.HotelClean.ui.base.BaseFragment;
 import cn.njthl.HotelClean.ui.fragment.FragmentFactory;
 import cn.njthl.HotelClean.ui.presenter.MainAtPresenter;
 import cn.njthl.HotelClean.ui.view.IMainAtView;
+import cn.njthl.HotelClean.util.LogUtils;
 import cn.njthl.HotelClean.util.UIUtils;
 
 import java.util.ArrayList;
@@ -94,12 +99,17 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
     }
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
+    }
+    @Override
     public void initView() {
 //        StatusBarUtil.setTranslucent(this);
 //        StatusBarUtil.setColorNoTranslucent(this,UIUtils.getColor(R.color.side_bar_pressed));
-        setToolbarTitle(UIUtils.getString(R.string.app_name));
-        mIbAddMenu.setVisibility(View.VISIBLE);
-
+        mIbAddMenu.setVisibility(View.GONE);
+        mAppBar.setVisibility(View.VISIBLE);
+        setToolbarTitle("首页");
         //等待全局数据获取完毕
 //        showWaitingDialog(UIUtils.getString(R.string.please_wait));
 
@@ -185,21 +195,29 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
         setTransparency();
         switch (view.getId()) {
             case R.id.llMessage:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("首页");
                 mVpContent.setCurrentItem(0, false);
                 mTvMessagePress.getBackground().setAlpha(255);
                 mTvMessageTextPress.setTextColor(Color.argb(255, 69, 192, 26));
                 break;
             case R.id.llContacts:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("派单");
                 mVpContent.setCurrentItem(1, false);
                 mTvContactsPress.getBackground().setAlpha(255);
                 mTvContactsTextPress.setTextColor(Color.argb(255, 69, 192, 26));
                 break;
             case R.id.llDiscovery:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("订单管理");
                 mVpContent.setCurrentItem(2, false);
                 mTvDiscoveryPress.getBackground().setAlpha(255);
                 mTvDiscoveryTextPress.setTextColor(Color.argb(255, 69, 192, 26));
                 break;
             case R.id.llMe:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("我的");
                 mVpContent.setCurrentItem(3, false);
                 mTvMePress.getBackground().setAlpha(255);
                 mTvMeTextPress.setTextColor(Color.argb(255, 69, 192, 26));
@@ -249,6 +267,7 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
         //根据ViewPager滑动位置更改透明度
         int diaphaneity_one = (int) (255 * positionOffset);
         int diaphaneity_two = (int) (255 * (1 - positionOffset));
+//        LogUtils.sf("滑动的下标"+position);
         switch (position) {
             case 0:
                 mTvMessageNormal.getBackground().setAlpha(diaphaneity_one);
@@ -285,7 +304,24 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
 
     @Override
     public void onPageSelected(int position) {
-
+        switch (position) {
+            case 0:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("首页");
+                break;
+            case 1:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("派单");
+                break;
+            case 2:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("订单管理");
+                break;
+            case 3:
+                mAppBar.setVisibility(View.VISIBLE);
+                mToolbarTitle.setText("我的");
+                break;
+        }
     }
 
     @Override

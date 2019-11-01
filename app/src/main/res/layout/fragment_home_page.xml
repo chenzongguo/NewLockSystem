@@ -6,20 +6,23 @@
 
 <!--    <include layout="@layout/include_bar"/>-->
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@drawable/ic_nj_banner"
-        />
-
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="250dp"-->
+<!--        android:background="@drawable/ic_nj_banner"-->
+<!--        />-->
     <ImageView
         android:id="@+id/img_NoOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/no_order"
+        android:visibility="gone"
         />
 
-    <ListView
+<!--    <include layout="@layout/include_list_null"-->
+<!--        />-->
+
+    <cn.njthl.HotelClean.widget.MyListView
         android:id="@+id/lv_order_receive"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

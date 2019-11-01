@@ -13,6 +13,8 @@ import cn.njthl.HotelClean.ui.base.BaseActivity;
 import cn.njthl.HotelClean.ui.base.BasePresenter;
 import cn.njthl.HotelClean.ui.view.IUserListAtView;
 
+import cn.njthl.HotelClean.util.LogUtils;
+import cn.njthl.HotelClean.util.UIUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -34,6 +36,7 @@ public class UserListAtPresenter  extends BasePresenter<IUserListAtView> impleme
         getUserListRequest.setType("2");
 //        getUserListRequest.setUser_id("5");
         getUserListRequest.setPartner_id("1");//商户id
+        getUserListRequest.setRole_id("4");
         ApiRetrofit.getInstance().getUserList(getUserListRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -59,7 +62,7 @@ public class UserListAtPresenter  extends BasePresenter<IUserListAtView> impleme
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                         Toast.makeText(mContext, getUserListResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                }, this::loginError);
     }
     private void setAdapter(){
 
@@ -68,17 +71,9 @@ public class UserListAtPresenter  extends BasePresenter<IUserListAtView> impleme
         userListAdapter.setCheckBoxOnClickListener(this);
 //        orderReceiveAdapter.setOnClick(this);
         getView().getLvOrderNoConfirm().setAdapter(userListAdapter);
-        getView().getLvOrderNoConfirm().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(mContext,"长按点击事件",Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
         getView().getLvOrderNoConfirm().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(mContext,"listview点击事件",Toast.LENGTH_SHORT).show();
                 userListAdapter.setCheckPosition(position);
                 checkposition = position;
                 getView().getTvCleanerName().setText("当前指派人员为"+getUserListResponse.getData().get(position).getName());
@@ -103,5 +98,9 @@ public class UserListAtPresenter  extends BasePresenter<IUserListAtView> impleme
         intent.putExtra("user_id",getUserListResponse.getData().get(checkposition).getUser_id());
         mContext.setResult(1,intent);
         mContext.finish();
+    }
+    private void loginError(Throwable throwable) {
+        LogUtils.e(throwable.getLocalizedMessage());
+        UIUtils.showToast(throwable.getLocalizedMessage());
     }
 }

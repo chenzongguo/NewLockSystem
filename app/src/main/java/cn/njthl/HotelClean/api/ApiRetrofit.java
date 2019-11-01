@@ -3,10 +3,12 @@ package cn.njthl.HotelClean.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import cn.njthl.HotelClean.api.base.BaseApiRetrofit;
+import cn.njthl.HotelClean.model.Bean.UserPerfectBean;
 import cn.njthl.HotelClean.model.request.BaseRequest;
 import cn.njthl.HotelClean.model.request.ChangeStateRequest;
 import cn.njthl.HotelClean.model.request.CheckCaptchaRequest;
 import cn.njthl.HotelClean.model.request.CheckUpdateRequest;
+import cn.njthl.HotelClean.model.request.CheckUserPhoneRequest;
 import cn.njthl.HotelClean.model.request.GetCleanPicRequest;
 import cn.njthl.HotelClean.model.request.GetOrderListRequest;
 import cn.njthl.HotelClean.model.request.GetOrderRequest;
@@ -120,8 +122,18 @@ public class ApiRetrofit extends BaseApiRetrofit {
     }
 
     //用户注册
+    public Observable<BaseResponse> checkUserPhone( String phone) {
+        return mApi.checkUserPhone(getRequestBody(new CheckUserPhoneRequest(phone)));
+    }
+
+    //用户注册
     public Observable<BaseResponse> userRegister( String phone, String pwd) {
         return mApi.userRegister(getRequestBody(new UserRegisterRequest(phone,pwd)));
+    }
+
+    //用户信息完善
+    public Observable<BaseResponse> userPerfectData(UserPerfectBean userPerfectBean) {
+        return mApi.userPerfectData(getUserTokenRequestBody(userPerfectBean));
     }
 
     //用户登录

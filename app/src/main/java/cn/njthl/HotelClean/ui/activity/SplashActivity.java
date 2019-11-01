@@ -16,6 +16,8 @@ import cn.njthl.HotelClean.ui.base.BaseActivity;
 import cn.njthl.HotelClean.ui.base.BasePresenter;
 
 import butterknife.BindView;
+import cn.njthl.HotelClean.util.LogUtils;
+import cn.njthl.HotelClean.util.UIUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -26,7 +28,7 @@ import rx.schedulers.Schedulers;
 public class SplashActivity extends BaseActivity {
 
     private  boolean userTokenIsOk = false;
-
+    ProgressDialog mProgressDialog;
     @BindView(R2.id.rlButton)
     RelativeLayout mRlButton;
     @BindView(R2.id.btnLogin)
@@ -41,6 +43,7 @@ public class SplashActivity extends BaseActivity {
             //存储空间
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
+
     };
 
     @Override
@@ -82,7 +85,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     public void onPermissionSuccess() {
-        final ProgressDialog mProgressDialog = new ProgressDialog(this);
+        mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mProgressDialog.setTitle("loading register data...");
         mProgressDialog.setCancelable(false);
@@ -94,15 +97,22 @@ public class SplashActivity extends BaseActivity {
                 .subscribe(baseResponse -> {
                     String code = baseResponse.getCode();
                     if("000".equals(code)){
-                        mProgressDialog.cancel();
-                        jumpToActivity(MainActivity.class);
-                        finish();
+                        if(AppConst.Is_complete.equals("0")){
+                            mProgressDialog.cancel();
+                            jumpToActivity(LoginActivity.class);
+                            finish();
+                        }else{
+                            mProgressDialog.cancel();
+                            jumpToActivity(MainActivity.class);
+                            finish();
+                        }
+
                     }else{
                         mProgressDialog.cancel();
                         jumpToActivity(LoginActivity.class);
                         finish();
                     }
-                });
+                }, this::loginError);
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
@@ -137,5 +147,15 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected int provideContentViewId() {
         return R.layout.activity_splash;
+    }
+
+    private void loginError(Throwable throwable) {
+        LogUtils.e(throwable.getLocalizedMessage());
+        UIUtils.showToast(throwable.getLocalizedMessage());
+        hideWaitingDialog();
+        mProgressDialog.cancel();
+        jumpToActivity(LoginActivity.class);
+        finish();
+
     }
 }

@@ -54,7 +54,7 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.colorPrimary), 10);
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
     }
 
     TextWatcher watcher = new TextWatcher() {
@@ -65,6 +65,11 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             mBtnLogin.setEnabled(canLogin());
+            if(!canLogin()){
+                mBtnLogin.setBackgroundColor(UIUtils.getColor(R.color.line));
+            }else{
+                mBtnLogin.setBackgroundColor(UIUtils.getColor(R.color.assist_green1));
+            }
         }
 
         @Override
@@ -82,6 +87,11 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
         mIbAddMenu.setVisibility(View.GONE);
     }
 
+
+    @Override
+    protected boolean isToolbarCanBack() {
+        return false;
+    }
     @Override
     public void initListener() {
         mEtPwd.addTextChangedListener(watcher);

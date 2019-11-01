@@ -74,7 +74,13 @@ public class OrderAllocationAdapter extends BaseAdapter {
 //        });
         holder.tvTime.setText(OrderBeanlist.get(position).getDoor_time());
         holder.tvAddress.setText(OrderBeanlist.get(position).getCorp_addr());
-        holder.tvPaymentPrice.setText("¥"+OrderBeanlist.get(position).getPayment_price());
+        if(OrderBeanlist.get(position).getOrder_state().equals("3")){
+            holder.tvPaymentPrice.setText("待派单");
+        }
+        if(OrderBeanlist.get(position).getOrder_state().equals("4")){
+            holder.tvPaymentPrice.setText("已派单");
+        }
+
         holder.tvCorpName.setText(OrderBeanlist.get(position).getCorp_name());
         holder.tvContacts.setText(OrderBeanlist.get(position).getContacts());
         holder.tvContactPhone.setText(OrderBeanlist.get(position).getContact_phone());

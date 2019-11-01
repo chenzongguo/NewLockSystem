@@ -5,9 +5,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import cn.njthl.HotelClean.api.ApiRetrofit;
+import cn.njthl.HotelClean.model.Bean.ChooseOrderRoomBean;
 import cn.njthl.HotelClean.model.Bean.OrderRoomBean;
 import cn.njthl.HotelClean.model.request.GetOrderRequest;
 import cn.njthl.HotelClean.model.request.GetUserListRequest;
@@ -20,24 +22,30 @@ import cn.njthl.HotelClean.ui.adapter.OrderRoomAdapter;
 import cn.njthl.HotelClean.ui.base.BaseActivity;
 import cn.njthl.HotelClean.ui.base.BasePresenter;
 import cn.njthl.HotelClean.ui.view.IOrderDetailAtView;
+import cn.njthl.HotelClean.util.LogUtils;
 import cn.njthl.HotelClean.util.SystemUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import cn.njthl.HotelClean.util.UIUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
+public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> implements CompoundButton.OnCheckedChangeListener {
 
     private OrderRoomAdapter orderRoomAdapter;
     private List<OrderRoomBean> orderRoomBeanList;
+    private List<ChooseOrderRoomBean> chooseOrderRoomBeanList;
     private GetOrderResponse getOrderResponse;
     private GetUserListResponse getUserListResponse;
     private Boolean OrderAllocation = false;
+    private boolean allChoose = false;
     private String order_id;
     private String order_state;
     private String items[];
     private int i = 0;
+    private int ChooseNum;
     public OederDetailAtPresenter(BaseActivity context) {
         super(context);
     }
@@ -54,11 +62,13 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
             getView().getBtnParnterReceipt().setText("确认接单");
         }
         if(order_state.equals("3")){
+            getView().getAllChoose().setVisibility(View.VISIBLE);
             getView().getTvOrderState().setText("待派单");
             getView().getBtnParnterReceipt().setText("去派单");
             OrderAllocation = true;
         }
         if(order_state.equals("4")){
+            getView().getAllChoose().setVisibility(View.VISIBLE);
             getView().getTvOrderState().setText("已派单");
             getView().getBtnParnterReceipt().setText("重新派单");
             OrderAllocation = true;
@@ -94,6 +104,11 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
                     if("000".equals(code)){
                         this.getOrderResponse = getOrderResponse;
                         orderRoomBeanList =  getOrderResponse.getData().getCorp_room_data();
+                        chooseOrderRoomBeanList = new ArrayList<ChooseOrderRoomBean>();
+                        for (int i =0;i<orderRoomBeanList.size();i++){
+                            ChooseOrderRoomBean chooseOrderRoomBean= new ChooseOrderRoomBean();
+                            chooseOrderRoomBeanList.add(chooseOrderRoomBean);
+                        }
 //                        showUpdateDialog(checkUpdateResponse.getData().getDownload_address());
 //                        registerReceiver();
                         setAdapter();
@@ -101,12 +116,12 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
                     }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                },this::loginError);
     }
     private void setAdapter(){
 
         if(orderRoomAdapter == null)
-            orderRoomAdapter = new OrderRoomAdapter(mContext,orderRoomBeanList);
+            orderRoomAdapter = new OrderRoomAdapter(mContext,order_state,orderRoomBeanList,chooseOrderRoomBeanList,this);
 //        orderRoomAdapter.setOnClick(this);
         getView().getLvRoomInfo().setAdapter(orderRoomAdapter);
         SystemUtil.setListViewHeightBasedOnChildren(getView().getLvRoomInfo());
@@ -120,7 +135,6 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
         getView().getLvRoomInfo().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(mContext,"listview点击事件",Toast.LENGTH_SHORT).show();
 //                mContext.jumpToActivityAndClearTask(OrderDetailActivity.class);
             }
         });
@@ -154,15 +168,22 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
 ////                        registerReceiver();
 //                        setAdapter();
 //                        initView(getOrderResponse);
+                            getView().getAllChoose().setVisibility(View.VISIBLE);
                             getView().getBtnParnterReceipt().setText("去派单");
+                            orderRoomAdapter.setOrder_state();
+                            orderRoomAdapter.notifyDataSetChanged();
                             OrderAllocation = true;
                             Toast.makeText(mContext, "接单成功", Toast.LENGTH_SHORT).show();
                         }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                             Toast.makeText(mContext, getBaseResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    },this::loginError);
         }else{
+            if(!IsChoose()){
+                Toast.makeText(mContext, "请选择需要分配的房间", Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent intent = new Intent(mContext, UserListActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             mContext.startActivityForResult(intent, 100);
@@ -179,6 +200,8 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
 
     public void OrderAllocation(String userId){
         for (int i =0;i<orderRoomBeanList.size();i++){
+            if(!chooseOrderRoomBeanList.get(i).isIs_choose())
+                continue;
             UpdateOrderRoomStateRequest updateOrderRoomStateRequest = new UpdateOrderRoomStateRequest();
             updateOrderRoomStateRequest.setType("1");
             updateOrderRoomStateRequest.setUser_id(userId);
@@ -201,7 +224,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                             Toast.makeText(mContext, getBaseResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    },this::loginError);
         }
 
     }
@@ -236,7 +259,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                             Toast.makeText(mContext, getUserListResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    },this::loginError);
     }
     private void dialogChoice() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext,3);
@@ -263,5 +286,51 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> {
         });
         builder.create().show();
         i = 0;
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        int p = (Integer)buttonView.getTag();
+        chooseOrderRoomBeanList.get(p).setIs_choose(isChecked);
+        ChooseNum = 0;
+        for (i=0;i<chooseOrderRoomBeanList.size();i++){
+            if(chooseOrderRoomBeanList.get(i).isIs_choose()){
+                ChooseNum = ChooseNum+1;
+            }
+        }
+        if(ChooseNum ==chooseOrderRoomBeanList.size()){
+            allChoose = true;
+            getView().getAllChoose().setChecked(true);
+        }else{
+            allChoose = false;
+            getView().getAllChoose().setChecked(false);
+        }
+    }
+
+    public void AllChoose(){
+        if(getView().getAllChoose().isChecked()){
+//            getView().getAllChoose().setChecked(true);
+            for (int i =0;i<orderRoomBeanList.size();i++){
+                chooseOrderRoomBeanList.get(i).setIs_choose(true);
+            }
+        }else{
+            for (int i =0;i<orderRoomBeanList.size();i++){
+                chooseOrderRoomBeanList.get(i).setIs_choose(false);
+            }
+        }
+        orderRoomAdapter.notifyDataSetChanged();
+    }
+
+    private boolean IsChoose(){
+        for (int i =0;i<orderRoomBeanList.size();i++) {
+            if (chooseOrderRoomBeanList.get(i).isIs_choose())
+                return true;
+        }
+        return false;
+    }
+
+    private void loginError(Throwable throwable) {
+        LogUtils.e(throwable.getLocalizedMessage());
+        UIUtils.showToast(throwable.getLocalizedMessage());
     }
 }

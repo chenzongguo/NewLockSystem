@@ -77,6 +77,26 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:name=".ui.activity.UserManageActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.UserInvitationActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.UserPerfectActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.UserInfoActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.SettingActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name=".ui.activity.LockedActivity"
             android:screenOrientation="portrait">
         </activity>

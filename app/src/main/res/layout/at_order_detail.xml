@@ -25,7 +25,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:background="@color/colorPrimary">
+                    android:background="@color/assist_green1">
                     <TextView
                         android:id="@+id/tvOrderState"
                         android:layout_width="wrap_content"
@@ -281,11 +281,12 @@
             android:layout_centerVertical="true"
             android:orientation="horizontal">
             <CheckBox
-                android:id="@+id/choose"
+                android:id="@+id/AllChoose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:focusable="false"
                 android:gravity="center"
+                android:visibility="gone"
                 />
 
             <TextView
@@ -305,7 +306,8 @@
                 android:textSize="@dimen/text_20"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
-                android:text="共9个房间已选中8个房间"/>
+                android:text="共9个房间已选中8个房间"
+                android:visibility="gone"/>
         </LinearLayout>
 
 

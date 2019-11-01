@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <include layout="@layout/include_toolbar"
-        android:visibility="gone"/>
+        />
 
 
     <ImageView

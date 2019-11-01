@@ -50,9 +50,18 @@ public interface MyApi {
     @POST("hsp/tool/checkCaptcha.do")
     Observable<BaseResponse> checkCaptcha(@Body RequestBody jsonString);
 
+    //验证手机号是否存在
+    @POST("hsp/user/checkUserPhone.do")
+    Observable<BaseResponse> checkUserPhone(@Body RequestBody jsonString);
+
     //用户注册
     @POST("hsp/user/userRegister.do")
     Observable<BaseResponse> userRegister(@Body RequestBody jsonString);
+
+
+    //用户信息完善
+    @POST("hsp/user/userPerfectData.do")
+    Observable<BaseResponse> userPerfectData(@Body RequestBody jsonString);
 
     //用户登录
     @POST("hsp/user/userLogin.do")

@@ -11,11 +11,12 @@ import cn.njthl.HotelClean.ui.presenter.HomePageFgPresenter;
 import cn.njthl.HotelClean.ui.view.HomePageFgView;
 
 import butterknife.BindView;
+import cn.njthl.HotelClean.widget.MyListView;
 
 public class HomePageFragment extends BaseFragment<HomePageFgView, HomePageFgPresenter> implements HomePageFgView{
 
     @BindView(R2.id.lv_order_receive)
-    ListView lv_OrderReceive;
+    MyListView lv_OrderReceive;
 
     @BindView(R2.id.img_NoOrder)
     ImageView img_NoOrder;
@@ -23,7 +24,6 @@ public class HomePageFragment extends BaseFragment<HomePageFgView, HomePageFgPre
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.getConversations();
     }
 
     @Override
@@ -31,6 +31,7 @@ public class HomePageFragment extends BaseFragment<HomePageFgView, HomePageFgPre
         super.onStart();
         mPresenter.getConversations();
     }
+
 
     @Override
     protected HomePageFgPresenter createPresenter() {
@@ -43,7 +44,7 @@ public class HomePageFragment extends BaseFragment<HomePageFgView, HomePageFgPre
     }
 
     @Override
-    public ListView getLvOrderReceive() {
+    public MyListView getLvOrderReceive() {
         return lv_OrderReceive;
     }
 

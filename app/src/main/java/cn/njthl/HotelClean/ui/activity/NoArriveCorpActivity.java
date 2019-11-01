@@ -10,6 +10,7 @@ import cn.njthl.HotelClean.ui.presenter.NoArriveCorpAtPresenter;
 import cn.njthl.HotelClean.ui.view.INoArriveCorpAtView;
 
 import butterknife.BindView;
+import cn.njthl.HotelClean.util.UIUtils;
 
 public class NoArriveCorpActivity extends BaseActivity<INoArriveCorpAtView, NoArriveCorpAtPresenter> implements INoArriveCorpAtView {
 
@@ -23,6 +24,29 @@ public class NoArriveCorpActivity extends BaseActivity<INoArriveCorpAtView, NoAr
     protected void onResume() {
         super.onResume();
         mPresenter.getConversations();
+    }
+
+    @Override
+    public void initView() {
+        super.initView();
+        String order_state = getIntent().getStringExtra("order_state");
+        switch (order_state){
+            case "4":
+                setToolbarTitle("待确认订单");
+                break;
+            case "5":
+                setToolbarTitle("已确认订单");
+                break;
+            case "6":
+                setToolbarTitle("已上门订单");
+                break;
+            case "9":
+                setToolbarTitle("已打扫订单");
+                break;
+            case "7":
+                setToolbarTitle("已完成订单");
+                break;
+        }
     }
 
     @Override

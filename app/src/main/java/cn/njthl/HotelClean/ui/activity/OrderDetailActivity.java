@@ -3,6 +3,7 @@ package cn.njthl.HotelClean.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -51,6 +52,9 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
 //
     @BindView(R2.id.btnParnterReceipt)
     Button btnParnterReceipt;
+
+    @BindView(R2.id.AllChoose)
+    CheckBox AllChoose;
 //
 //    @BindView(R2.id.etVerifyCode)
 //    EditText mEtVerifyCode;
@@ -74,27 +78,42 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.colorPrimary), 10);
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        String user_id = data.getStringExtra("user_id");
-        mPresenter.OrderAllocation(user_id);
+        String user_id = "";
+        if (data!=null)
+             user_id = data.getStringExtra("user_id");
+        if(user_id!=null&&!user_id.equals(""))
+            mPresenter.OrderAllocation(user_id);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         mPresenter.getConversations();
     }
 
+    @Override
+    public void initView() {
+        super.initView();
+        mToolbarTitle.setText("订单详情");
+    }
     @Override
     public void initListener() {
         btnParnterReceipt.setOnClickListener(v -> mPresenter.ParnterReceipt());
 //        mBtnCheckCaptcha.setOnClickListener(v -> mPresenter.GetVerifyCode());
 //        mBtnUserRegister.setOnClickListener(v -> mPresenter.register());
+        AllChoose.setOnClickListener(v -> mPresenter.AllChoose());
     }
 
 
@@ -162,6 +181,11 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     @Override
     public TextView getTvOrderState() {
         return tvOrderState;
+    }
+
+    @Override
+    public CheckBox getAllChoose() {
+        return AllChoose;
     }
 
     @Override
