@@ -63,6 +63,7 @@
             android:rating="4.5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:isIndicator="true"
             android:layout_marginLeft="10dp">
         </RatingBar>
 
@@ -166,6 +167,7 @@
             android:rating="4.5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:isIndicator="true"
             android:layout_marginLeft="10dp">
         </RatingBar>
     </LinearLayout>
@@ -189,6 +191,7 @@
             android:rating="4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:isIndicator="true"
             android:layout_marginLeft="10dp">
         </RatingBar>
     </LinearLayout>
@@ -211,6 +214,7 @@
             android:rating="5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:isIndicator="true"
             android:layout_marginLeft="10dp">
         </RatingBar>
     </LinearLayout>

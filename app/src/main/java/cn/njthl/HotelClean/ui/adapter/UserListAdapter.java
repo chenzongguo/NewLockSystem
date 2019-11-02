@@ -19,11 +19,16 @@ public class UserListAdapter extends BaseAdapter implements CompoundButton.OnChe
     private List<UserBean> userBeanList;
     private int checkPosition = -1;
     private OnCheckedChangeClickListener dbListener;
+    private boolean isShowCheckbox = false ;
 
     public UserListAdapter(Context context, List<UserBean> userBeanList) {
         // TODO Auto-generated constructor stub
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.userBeanList = userBeanList;
+    }
+
+    public void setIsShowCheckbox(boolean isShowCheckbox){
+        this.isShowCheckbox = isShowCheckbox;
     }
 
     @Override
@@ -55,6 +60,9 @@ public class UserListAdapter extends BaseAdapter implements CompoundButton.OnChe
         }
 //        holder.checkbox.setOnCheckedChangeListener(this);
         holder.checkbox.setTag(position);
+        if(isShowCheckbox){
+            holder.checkbox.setVisibility(View.VISIBLE);
+        }
         if(position==checkPosition){
             holder.checkbox.setChecked(true);
         }else{

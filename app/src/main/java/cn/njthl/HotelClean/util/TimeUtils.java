@@ -113,5 +113,47 @@ public class TimeUtils {
 //        }
 //        return when + " " + msgTime.toString("hh:mm");
 //    }
+public static String DateTimeToString(String _date) {
+    if(_date ==null){
+        return "";
+    }
+    String time [] = _date.split(",");
+    _date = time[time.length-1];
+    String text = "";
+    String result;
 
+    if (_date != null) {
+        try {
+            if (_date != null) {
+                _date = _date.trim();
+                String format;
+                String format2;
+                if (_date.length() == 8) {
+                    format = "yyyyMMdd";
+                    format2 = "yyyy-MM-dd";
+                }
+                else if (_date.length() == 12) {
+                    format = "yyyyMMddHHmm";
+                    format2 = "yyyy-MM-dd HH:mm";
+                }
+                else {
+                    if (_date.length() != 14) {
+                        result = text;
+                        return result;
+                    }
+                    format = "yyyyMMddHHmmss";
+                    format2 = "yyyy-MM-dd HH:mm:ss";
+                }
+                SimpleDateFormat sdFormat1 = new SimpleDateFormat(format, Locale.getDefault());
+                SimpleDateFormat sdFormat2 = new SimpleDateFormat(format2, Locale.getDefault());
+                Date date = sdFormat1.parse(_date);
+                text = sdFormat2.format(date);
+            }
+        }
+        catch (Exception var_4_B7) {
+        }
+    }
+    result = text;
+    return result;
+}
 }

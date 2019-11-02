@@ -6,9 +6,11 @@ import butterknife.BindView;
 import cn.njthl.HotelClean.R;
 import cn.njthl.HotelClean.R2;
 import cn.njthl.HotelClean.app.AppConst;
+import cn.njthl.HotelClean.app.MyApp;
 import cn.njthl.HotelClean.ui.base.BaseActivity;
 import cn.njthl.HotelClean.ui.base.BasePresenter;
 import cn.njthl.HotelClean.util.ActivityCollectorUtils;
+import cn.njthl.HotelClean.util.SPUtils;
 
 public class SettingActivity extends BaseActivity {
 
@@ -22,7 +24,7 @@ public class SettingActivity extends BaseActivity {
     }
 
     private void logout(){
-        AppConst.USER_TOKEN = "";
+        SPUtils.getInstance(MyApp.getContext()).putString("USER_TOKEN","");
         ActivityCollectorUtils.finishAllActivity();
         jumpToActivityAndClearTop(LoginActivity.class);
     }

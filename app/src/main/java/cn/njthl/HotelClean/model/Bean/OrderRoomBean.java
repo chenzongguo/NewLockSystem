@@ -139,6 +139,22 @@ public class OrderRoomBean {
         this.user_rating_id = user_rating_id;
     }
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private String order_room_id ="";
     private String order_room_state = "";
     private String corp_room_id ="";
@@ -155,6 +171,8 @@ public class OrderRoomBean {
     private String user_rating_id = "";
     private String bed_num ="";
     private String room_area_id ="";
+    private String user_id ="";
+    private String name ="";
     private List<OrderGoodsBean> order_goods_data;
 
 //    private List<OrderServicesBean> order_services_data;

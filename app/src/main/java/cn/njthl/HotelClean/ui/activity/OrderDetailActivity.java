@@ -89,6 +89,8 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
              user_id = data.getStringExtra("user_id");
         if(user_id!=null&&!user_id.equals(""))
             mPresenter.OrderAllocation(user_id);
+        else
+            UIUtils.showToast("未选择保洁员，无法派单");
     }
 
     @Override

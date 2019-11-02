@@ -173,8 +173,20 @@ public class UserPerfectActivity extends BaseActivity {
             UIUtils.showToast("请填写身份证号");
             return false;
         }
+        if (etCert_no.getText().toString().trim().length()!=18) {
+            UIUtils.showToast("身份证号只能是18位");
+            return false;
+        }
+        if(!ValidateUtils.CheckIDCard(etCert_no.getText().toString().trim())){
+            UIUtils.showToast("身份证号不正确");
+            return false;
+        }
         if (TextUtils.isEmpty(mEtPhone.getText().toString().trim())) {
             UIUtils.showToast("请填写手机号");
+            return false;
+        }
+        if (mEtPhone.getText().toString().trim().length()!=11) {
+            UIUtils.showToast("手机号需要是11位数字");
             return false;
         }
         if(!IDcardFace_isOk){

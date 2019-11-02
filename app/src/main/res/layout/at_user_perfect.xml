@@ -205,6 +205,7 @@
                 android:layout_width="50sp"
                 android:layout_height="50sp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
                 android:src="@drawable/taking_pic"
                 />
         </LinearLayout>
@@ -241,6 +242,7 @@
                 android:layout_width="50sp"
                 android:layout_height="50sp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
                 android:src="@drawable/taking_pic"
                 />
         </LinearLayout>
@@ -276,6 +278,7 @@
                 android:layout_width="50sp"
                 android:layout_height="50sp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
                 android:src="@drawable/taking_pic"
                 />
         </LinearLayout>

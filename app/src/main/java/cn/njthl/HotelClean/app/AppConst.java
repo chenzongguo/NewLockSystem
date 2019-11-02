@@ -2,6 +2,7 @@ package cn.njthl.HotelClean.app;
 
 
 import cn.njthl.HotelClean.util.LogUtils;
+import cn.njthl.HotelClean.util.SPUtils;
 
 /**
  * @创建者
@@ -18,10 +19,11 @@ public class AppConst {
     //全局数据获取
     public static final String FETCH_COMPLETE = "fetch_complete";
 
-    public static String USER_TOKEN ="";
+    public static String USER_TOKEN = SPUtils.getInstance(MyApp.getContext()).getString("USER_TOKEN","");
+
     public static String Is_complete ="";
 
-    public static String USER_ID ="";
+    public static String USER_ID = SPUtils.getInstance(MyApp.getContext()).getString("USER_ID","");
     public static String ROLE_ID ="";
 
     //好友

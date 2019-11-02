@@ -1,5 +1,6 @@
 package cn.njthl.HotelClean.ui.presenter;
 
+import android.app.Application;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -7,6 +8,7 @@ import android.widget.Toast;
 import cn.njthl.HotelClean.R;
 import cn.njthl.HotelClean.api.ApiRetrofit;
 import cn.njthl.HotelClean.app.AppConst;
+import cn.njthl.HotelClean.app.MyApp;
 import cn.njthl.HotelClean.model.request.UserLoginRequest;
 import cn.njthl.HotelClean.ui.activity.MainActivity;
 import cn.njthl.HotelClean.ui.activity.RegisterActivity;
@@ -17,6 +19,7 @@ import cn.njthl.HotelClean.ui.view.ILoginAtView;
 import cn.njthl.HotelClean.util.ButtonUtils;
 import cn.njthl.HotelClean.util.LogUtils;
 import cn.njthl.HotelClean.util.NetUtils;
+import cn.njthl.HotelClean.util.SPUtils;
 import cn.njthl.HotelClean.util.UIUtils;
 
 import rx.android.schedulers.AndroidSchedulers;
@@ -66,8 +69,9 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
                         String code = userLoginResponse.getCode();
                         if("000".equals(code)){
                             mContext.hideWaitingDialog();
-                            AppConst.USER_TOKEN = userLoginResponse.getData().getUser_token();
-                            AppConst.USER_ID = userLoginResponse.getData().getUser_id();
+                            SPUtils.getInstance(MyApp.getContext()).putString("USER_TOKEN",userLoginResponse.getData().getUser_token());
+//                            AppConst.USER_ID = userLoginResponse.getData().getUser_id();
+                            SPUtils.getInstance(MyApp.getContext()).putString("USER_ID",userLoginResponse.getData().getUser_id());
                             AppConst.ROLE_ID = userLoginResponse.getData().getRole_id();
                             AppConst.Is_complete = userLoginResponse.getData().getIs_complete();
                             if(userLoginResponse.getData().getIs_complete().equals("0"))

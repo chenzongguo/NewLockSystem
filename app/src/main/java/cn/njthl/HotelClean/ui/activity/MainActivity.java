@@ -103,6 +103,13 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
         super.onCreate(savedInstanceState);
         StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
     }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        jumpToActivity(SplashActivity.class);
+        finish();
+    }
     @Override
     public void initView() {
 //        StatusBarUtil.setTranslucent(this);

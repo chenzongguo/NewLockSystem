@@ -71,11 +71,13 @@ public class UserListAtPresenter  extends BasePresenter<IUserListAtView> impleme
         userListAdapter.setCheckBoxOnClickListener(this);
 //        orderReceiveAdapter.setOnClick(this);
         getView().getLvOrderNoConfirm().setAdapter(userListAdapter);
+        userListAdapter.setIsShowCheckbox(true);
         getView().getLvOrderNoConfirm().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 userListAdapter.setCheckPosition(position);
                 checkposition = position;
+                UIUtils.showToast("已指派保洁员"+getUserListResponse.getData().get(position).getName());
                 getView().getTvCleanerName().setText("当前指派人员为"+getUserListResponse.getData().get(position).getName());
                 userListAdapter.notifyDataSetChanged();
 //                Intent intent = new Intent(mContext, OrderDetailActivity.class);
@@ -95,7 +97,13 @@ public class UserListAtPresenter  extends BasePresenter<IUserListAtView> impleme
 
     public void OrderAllocation(){
         Intent intent = new Intent();
-        intent.putExtra("user_id",getUserListResponse.getData().get(checkposition).getUser_id());
+        if(checkposition!=-1)
+            intent.putExtra("user_id",getUserListResponse.getData().get(checkposition).getUser_id());
+        else
+        {
+            UIUtils.showToast("未选择保洁员，无法派单");
+            return;
+        }
         mContext.setResult(1,intent);
         mContext.finish();
     }

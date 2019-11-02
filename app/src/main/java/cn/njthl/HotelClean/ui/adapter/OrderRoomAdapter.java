@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,6 +78,8 @@ public class OrderRoomAdapter extends BaseAdapter {
             holder.btnCompelte = (Button) convertView.findViewById(R.id.btnCompelte);
             holder.btnEvaluation = (Button) convertView.findViewById(R.id.btnEvaluation);
             holder.tvRoomState = (TextView)convertView.findViewById(R.id.tvRoomState);
+            holder.RlyCleanerName = (RelativeLayout) convertView.findViewById(R.id.RlyCleanerName);
+            holder.tvCleanerName = (TextView)convertView.findViewById(R.id.tvCleanerName);
             holder.checkbox = (CheckBox)convertView.findViewById(R.id.choose);
             convertView.setTag(holder);
         }else{
@@ -104,6 +107,11 @@ public class OrderRoomAdapter extends BaseAdapter {
 
         if(OrderRoomBeanlist.get(position).getIs_rating().equals("1")){
             holder.btnEvaluation.setVisibility(View.VISIBLE);
+        }
+
+        if(OrderRoomBeanlist.get(position).getUser_id()!=null&&!OrderRoomBeanlist.get(position).getUser_id().equals("")){
+            holder.RlyCleanerName.setVisibility(View.VISIBLE);
+            holder.tvCleanerName.setText(OrderRoomBeanlist.get(position).getName());
         }
         holder.btnEvaluation.setOnClickListener(new android.view.View.OnClickListener() {
 
@@ -149,8 +157,9 @@ public class OrderRoomAdapter extends BaseAdapter {
         return convertView;
     }
     class ViewHolder{
-        TextView tv_room_name,tv_room_type,tv_bed_num,tv_room_area,tvRoomState;
+        TextView tv_room_name,tv_room_type,tvCleanerName,tv_room_area,tvRoomState;
         Button btnCompelte,btnEvaluation;
+        RelativeLayout RlyCleanerName;
         CheckBox checkbox;
     }
 

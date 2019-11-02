@@ -1,5 +1,6 @@
 package cn.njthl.HotelClean.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -17,6 +18,7 @@ public class SPUtils {
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
 
+    @SuppressLint("WrongConstant")
     private SPUtils(Context context) {
         this.context = context;
         sp = this.context.getSharedPreferences(SP_NAME, Context.MODE_APPEND);
