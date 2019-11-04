@@ -60,7 +60,6 @@
         <RatingBar
             android:id="@+id/ratingBar"
             android:numStars="5"
-            android:rating="4.5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:isIndicator="true"
@@ -164,7 +163,6 @@
         <RatingBar
             android:id="@+id/cleanliness_star"
             android:numStars="5"
-            android:rating="4.5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:isIndicator="true"
@@ -188,7 +186,6 @@
         <RatingBar
             android:id="@+id/order_speed_star"
             android:numStars="5"
-            android:rating="4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:isIndicator="true"

@@ -4,6 +4,8 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.util.DisplayMetrics;
 
+import com.previewlibrary.ZoomMediaLoader;
+
 import cn.njthl.HotelClean.app.base.BaseApp;
 
 import org.litepal.LitePal;
@@ -40,6 +42,7 @@ public class MyApp extends BaseApp {
         super.onCreate();
         LitePal.initialize(this);
 //        SQLiteDatabase db = Connector.getDatabase();
+        ZoomMediaLoader.getInstance().init(new TestImageLoader());
         instance = this;
         DisplayMetrics mDisplayMetrics = getResources().getDisplayMetrics();
         mHeight = mDisplayMetrics.heightPixels;

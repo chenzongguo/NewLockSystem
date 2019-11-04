@@ -162,5 +162,9 @@ public class NewOrderManageFgPresenter extends BasePresenter<NewOrderManageFgVie
     private void loginError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
+        if (mContext == null || mContext.isDestroyed() || mContext.isFinishing()) {
+            return;
+        }
+        mContext.hideWaitingDialog();
     }
 }

@@ -100,8 +100,10 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
 
     private void loginError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
-        mContext.hideWaitingDialog();
         UIUtils.showToast(throwable.getLocalizedMessage());
-
+        if (mContext == null || mContext.isDestroyed() || mContext.isFinishing()) {
+            return;
+        }
+        mContext.hideWaitingDialog();
     }
 }

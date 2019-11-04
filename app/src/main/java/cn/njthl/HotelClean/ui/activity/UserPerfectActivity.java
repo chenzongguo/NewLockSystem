@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jaeger.library.StatusBarUtil;
+
 import butterknife.BindView;
 import cn.njthl.HotelClean.R;
 import cn.njthl.HotelClean.R2;
@@ -72,6 +74,7 @@ public class UserPerfectActivity extends BaseActivity {
     public void initView() {
         super.initView();
         setToolbarTitle("完善信息");
+        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
     }
     @Override
     public void initListener() {
@@ -254,9 +257,11 @@ public class UserPerfectActivity extends BaseActivity {
     }
 
     private void loginError(Throwable throwable) {
-        hideWaitingDialog();
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
-
+        if (this == null || this.isDestroyed() || this.isFinishing()) {
+            return;
+        }
+        hideWaitingDialog();
     }
 }

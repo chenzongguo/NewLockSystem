@@ -18,6 +18,7 @@ import cn.njthl.HotelClean.model.Bean.ChooseOrderRoomBean;
 import cn.njthl.HotelClean.model.Bean.OrderRoomBean;
 import cn.njthl.HotelClean.ui.activity.CompelteActivity;
 import cn.njthl.HotelClean.ui.activity.EvaluationInfoActivity;
+import cn.njthl.HotelClean.util.ButtonUtils;
 
 import java.util.List;
 
@@ -34,15 +35,17 @@ public class OrderRoomAdapter extends BaseAdapter {
         this.onClick = onClick;
     }
 
-    public OrderRoomAdapter(Context context,String order_state, List<OrderRoomBean> orderRoomBeanlist, List<ChooseOrderRoomBean> chooseOrderRoomBeanList
-    , CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
+    public OrderRoomAdapter(Context context,String order_state, CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
         // TODO Auto-generated constructor stub
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.OrderRoomBeanlist = orderRoomBeanlist;
-        this.chooseOrderRoomBeanList = chooseOrderRoomBeanList;
+
         this.onCheckedChangeListener = onCheckedChangeListener;
         mContext = context;
         this.order_state = order_state;
+    }
+    public void setlist(List<OrderRoomBean> orderRoomBeanlist, List<ChooseOrderRoomBean> chooseOrderRoomBeanList){
+        this.OrderRoomBeanlist = orderRoomBeanlist;
+        this.chooseOrderRoomBeanList = chooseOrderRoomBeanList;
     }
     @Override
     public int getCount() {
@@ -94,14 +97,15 @@ public class OrderRoomAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 //                onClick.OrderReceive();
-                if(OrderRoomBeanlist.get(position).getIs_clean().equals("1")){
-                    Intent intent = new Intent(mContext, CompelteActivity.class);
-                    intent.putExtra("pic_id",OrderRoomBeanlist.get(position).getPic_id());
-                    mContext.startActivity(intent);
-                }else{
-                    Toast.makeText(mContext,"房间正在打扫中 ",Toast.LENGTH_SHORT).show();
+                if (!ButtonUtils.isFastDoubleClick()) {
+                    if(OrderRoomBeanlist.get(position).getIs_clean().equals("1")){
+                        Intent intent = new Intent(mContext, CompelteActivity.class);
+                        intent.putExtra("pic_id",OrderRoomBeanlist.get(position).getPic_id());
+                        mContext.startActivity(intent);
+                    }else{
+                        Toast.makeText(mContext,"房间正在打扫中 ",Toast.LENGTH_SHORT).show();
+                    }
                 }
-
             }
         });
 
@@ -119,13 +123,16 @@ public class OrderRoomAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 //                onClick.OrderReceive();
-                if(OrderRoomBeanlist.get(position).getIs_rating().equals("1")){
-                    Intent intent = new Intent(mContext, EvaluationInfoActivity.class);
-                    intent.putExtra("user_rating_id",OrderRoomBeanlist.get(position).getUser_rating_id());
-                    mContext.startActivity(intent);
-                }else{
-                    Toast.makeText(mContext,"订单未完成无评价信息",Toast.LENGTH_SHORT).show();
+                if (!ButtonUtils.isFastDoubleClick()) {
+                    if(OrderRoomBeanlist.get(position).getIs_rating().equals("1")){
+                        Intent intent = new Intent(mContext, EvaluationInfoActivity.class);
+                        intent.putExtra("user_rating_id",OrderRoomBeanlist.get(position).getUser_rating_id());
+                        mContext.startActivity(intent);
+                    }else{
+                        Toast.makeText(mContext,"订单未完成无评价信息",Toast.LENGTH_SHORT).show();
+                    }
                 }
+
 
             }
         });

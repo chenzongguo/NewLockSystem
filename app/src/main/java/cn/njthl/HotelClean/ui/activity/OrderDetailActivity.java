@@ -79,6 +79,7 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         StatusBarUtil.setColor(this, UIUtils.getColor(R.color.assist_green1), 10);
+        mPresenter.getConversations();
     }
 
     @Override
@@ -97,12 +98,6 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailAtView, OederD
     protected void onResume() {
         super.onResume();
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mPresenter.getConversations();
     }
 
     @Override

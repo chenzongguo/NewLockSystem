@@ -9,6 +9,8 @@ import cn.njthl.HotelClean.ui.base.BasePresenter;
 import cn.njthl.HotelClean.ui.view.IEvaluationInfoView;
 import cn.njthl.HotelClean.util.ImageUtils;
 
+import cn.njthl.HotelClean.util.LogUtils;
+import cn.njthl.HotelClean.util.UIUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -53,6 +55,14 @@ public class EvaluationInfoAtPresenter extends BasePresenter<IEvaluationInfoView
                     }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                }, this::loginError);
+    }
+    private void loginError(Throwable throwable) {
+        LogUtils.e(throwable.getLocalizedMessage());
+        UIUtils.showToast(throwable.getLocalizedMessage());
+        if (mContext == null || mContext.isDestroyed() || mContext.isFinishing()) {
+            return;
+        }
+        mContext.hideWaitingDialog();
     }
 }

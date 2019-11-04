@@ -85,7 +85,7 @@ public class UserManageActivity extends BaseActivity {
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                         Toast.makeText(this, getUserListResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                },this::loginError);
     }
     private void setAdapter(){
 
@@ -111,6 +111,13 @@ public class UserManageActivity extends BaseActivity {
             }
         });
     }
-
+    private void loginError(Throwable throwable) {
+        LogUtils.e(throwable.getLocalizedMessage());
+        UIUtils.showToast(throwable.getLocalizedMessage());
+        if (this == null || this.isDestroyed() || this.isFinishing()) {
+            return;
+        }
+        hideWaitingDialog();
+    }
 
 }

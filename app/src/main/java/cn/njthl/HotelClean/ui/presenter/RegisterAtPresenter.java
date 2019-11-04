@@ -78,7 +78,7 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
                                             mContext.hideWaitingDialog();
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                                         }
-                                    });
+                                    },this::loginError);
                         }
                     },this::loginError);
         }
@@ -149,6 +149,10 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
     private void loginError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
+        if (mContext == null || mContext.isDestroyed() || mContext.isFinishing()) {
+            return;
+        }
+        mContext.hideWaitingDialog();
     }
 
 }

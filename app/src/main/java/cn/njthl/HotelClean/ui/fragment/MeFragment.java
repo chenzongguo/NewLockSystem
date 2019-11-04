@@ -1,5 +1,6 @@
 package cn.njthl.HotelClean.ui.fragment;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -18,8 +19,11 @@ public class MeFragment extends BaseFragment<MeFgView, MeFgPresenter> implements
     @BindView(R2.id.tvUserInvitation)
     TextView tvUserInvitation;
 
-    @BindView(R2.id.tv_setting)
-    TextView tv_setting;
+//    @BindView(R2.id.tv_setting)
+//    TextView tv_setting;
+
+    @BindView(R2.id.btnLogout)
+    Button mBtnLogout;
 
 
     @Override
@@ -27,7 +31,7 @@ public class MeFragment extends BaseFragment<MeFgView, MeFgPresenter> implements
         super.initListener();
         tvUser.setOnClickListener(v -> mPresenter.toUserManageActivity());
         tvUserInvitation.setOnClickListener(v -> mPresenter.toUserInvitationActivity());
-        tv_setting.setOnClickListener(v -> mPresenter.toSettingActivity());
+        mBtnLogout.setOnClickListener(v -> mPresenter.logout());
     }
 
     @Override

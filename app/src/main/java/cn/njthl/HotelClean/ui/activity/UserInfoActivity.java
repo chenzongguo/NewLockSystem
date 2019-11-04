@@ -113,6 +113,10 @@ public class UserInfoActivity extends BaseActivity {
     private void loginError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
+        if (this == null || this.isDestroyed() || this.isFinishing()) {
+            return;
+        }
+        hideWaitingDialog();
     }
 
 }

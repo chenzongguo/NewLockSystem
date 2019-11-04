@@ -55,6 +55,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> im
 
     }
     private void  loadData(){
+        mContext.showWaitingDialog("正在加载");
         order_id = mContext.getIntent().getStringExtra("order_id");
         order_state = mContext.getIntent().getStringExtra("order_state");
         if(order_state.equals("2")){
@@ -101,6 +102,7 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> im
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getOrderResponse -> {
                     String code = getOrderResponse.getCode();
+                    mContext.hideWaitingDialog();
                     if("000".equals(code)){
                         this.getOrderResponse = getOrderResponse;
                         orderRoomBeanList =  getOrderResponse.getData().getCorp_room_data();
@@ -121,10 +123,12 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> im
     private void setAdapter(){
 
         if(orderRoomAdapter == null)
-            orderRoomAdapter = new OrderRoomAdapter(mContext,order_state,orderRoomBeanList,chooseOrderRoomBeanList,this);
+            orderRoomAdapter = new OrderRoomAdapter(mContext,order_state,this);
 //        orderRoomAdapter.setOnClick(this);
+        orderRoomAdapter.setlist(orderRoomBeanList,chooseOrderRoomBeanList);
         getView().getLvRoomInfo().setAdapter(orderRoomAdapter);
         SystemUtil.setListViewHeightBasedOnChildren(getView().getLvRoomInfo());
+        orderRoomAdapter.notifyDataSetChanged();
         getView().getLvRoomInfo().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -152,7 +156,12 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> im
     }
 
     public void ParnterReceipt(){
+
         if (!OrderAllocation){
+            if(orderRoomBeanList==null){
+                UIUtils.showToast("没有获取到订单信息，无法接单");
+                return ;
+            }
             ParnterReceiptRequest parnterReceiptRequest = new ParnterReceiptRequest();
             parnterReceiptRequest.setPartner_id("1");
             parnterReceiptRequest.setPartner_name("测试");
@@ -220,8 +229,9 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> im
 //                        initView(getOrderResponse);
 //                            getView().getBtnParnterReceipt().setText("订单待确认");
 //                            getView().getBtnParnterReceipt().setEnabled(false);
-                            getView().getTvOrderState().setText("已派单");
-                            getView().getBtnParnterReceipt().setText("重新派单");
+//                            getView().getTvOrderState().setText("已派单");
+//                            getView().getBtnParnterReceipt().setText("重新派单");
+                            getConversations();
                         }else{
 //                        Toast.makeText(getContext(), getTokenResponse.getStatue(), Toast.LENGTH_SHORT).show();
                             Toast.makeText(mContext, getBaseResponse.getErrMessage(), Toast.LENGTH_SHORT).show();
@@ -310,6 +320,11 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> im
     }
 
     public void AllChoose(){
+        if(orderRoomBeanList==null){
+            UIUtils.showToast("没有获取到订单信息，无法选择");
+            return ;
+        }
+
         if(getView().getAllChoose().isChecked()){
 //            getView().getAllChoose().setChecked(true);
             for (int i =0;i<orderRoomBeanList.size();i++){
@@ -324,6 +339,10 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> im
     }
 
     private boolean IsChoose(){
+        if(orderRoomBeanList==null){
+            UIUtils.showToast("没有获取到订单信息，无法派单");
+            return false;
+        }
         for (int i =0;i<orderRoomBeanList.size();i++) {
             if (chooseOrderRoomBeanList.get(i).isIs_choose())
                 return true;
@@ -334,5 +353,10 @@ public class OederDetailAtPresenter extends BasePresenter<IOrderDetailAtView> im
     private void loginError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
+        if (mContext == null || mContext.isDestroyed() || mContext.isFinishing()) {
+            return;
+        }
+        mContext.hideWaitingDialog();
+
     }
 }

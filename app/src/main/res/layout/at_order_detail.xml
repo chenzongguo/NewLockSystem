@@ -145,7 +145,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:textSize="@dimen/text_20"
-                        android:text="2019-09-23 11:10:00"/>
+                        android:text="未加载"/>
                 </RelativeLayout>
                 <View
                     android:layout_width="match_parent"
@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:textSize="@dimen/text_20"
-                        android:text="今天 14:10:00"/>
+                        android:text="未加载"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -189,7 +189,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:textSize="@dimen/text_20"
-                        android:text="朱女士"/>
+                        android:text="未加载"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -208,7 +208,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:textSize="@dimen/text_20"
-                        android:text="15094307279"/>
+                        android:text="未加载"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -228,7 +228,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:textSize="@dimen/text_20"
-                        android:text="￥138.00"/>
+                        android:text="未加载"/>
                 </RelativeLayout>
 
 <!--                <View-->
